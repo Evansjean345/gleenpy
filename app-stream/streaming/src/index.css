@@ -1,0 +1,47 @@
+@media (max-width: 650px) {
+  #toggler {
+    width: 150px;
+  }
+  #video-container {
+    position: relative;
+    height: 70vh;
+  }
+  #video-trailer {
+    height: 100%;
+  }
+  #trailer-text {
+    position: absolute;
+    top: 100px;
+    padding-left: 30px;
+    width: 100%;
+  }
+  #iframe-trailer {
+    height: 315px;
+  }
+  #modal-btn {
+    width: 150px;
+  }
+  #div-trailer-movies-two{
+    display: none;
+  }
+}
+@media (min-width: 650px) {
+  #div-trailer-movies-one{
+    display: none;
+  }
+}
+
+@media (max-width: 1279px){
+  #nav{
+    visibility: hidden;
+  }
+  #logo{
+    position: absolute;
+    right: 0;
+    padding-right: 10px;
+  }
+}
+
+#logo{
+  padding-right: 14px;
+}
