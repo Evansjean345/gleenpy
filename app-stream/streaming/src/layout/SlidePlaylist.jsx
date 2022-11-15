@@ -3,22 +3,13 @@ import { Link } from "react-router-dom";
 
 const carousel = [
   {
+    textUnderline: "Coupé décalé",
+    overview: "C'est dosé",
+    to: "/musics/dose",
+    smallTitle: "Serge Beynaud",
     imgURL:
-      "https://www.billboard.com/wp-content/uploads/2021/12/brent-faiyaz-press-2021-cr-mark-peaced-billboard-1548.jpg",
-    imageAlt: "16callsMissed",
-    smallTitle: "Brent Faiyaz X baby Keem",
-    overview: "16 calls missed",
-    textUnderline: "R&B/SOUL",
-    to:"/musics/brent"
-  },
-  {
-    imgURL:
-      "https://bazik.tv/wp-content/uploads/2021/07/summer-walker-1-e1570671184568.jpeg",
-    imageAlt: "summer walker",
-    smallTitle: "Summer Walker",
-    overview: "Karma",
-    textUnderline: "R&B/SOUL",
-    to:"/musics/summer"
+      "https://actupeople.net/wp-content/uploads/2022/03/Serge-Beynaud-cest-dose.jpg",
+    imageAlt: "",
   },
   {
     imgURL:
@@ -39,13 +30,39 @@ const carousel = [
     to:"musics/tala"
   },
   {
+    id: "39",
+    overview: "Yee Molare",
+    to: "/musics/molare",
+    smallTitle: "Molaré",
     imgURL:
-      "https://www.letelegramme.fr/images/2020/07/22/en-2019-josman-avait-fait-salle-comble-a-brest-son-retour_5237179.jpg",
-    imageAlt: "JOS",
-    smallTitle: "Josman",
-    overview: "INTRO",
-    textUnderline: "French rap",
-    to:'/musics/intro'
+      "https://i.scdn.co/image/ab67616d0000b273b2766f5580722e93827f0c5b",
+    textUnderline: "Coupé décalé",
+  },
+  {
+    id: "2",
+    overview: "En haut",
+    to: "/musics/haut",
+    smallTitle: "didi B X Jr Low",
+    imgURL:
+      "https://i0.wp.com/bwelitribe.com/wp-content/uploads/2022/08/300635916_5217977094985429_1942704835354281072_n.jpg?fit=1080%2C1115&ssl=1",
+    textUnderline: "Rap ivoire",
+  },
+  {
+    id: "39",
+    overview: "Emiliana",
+    to: "/musics/emiliana",
+    smallTitle: "C kay",
+    imgURL:
+      "https://cdns-images.dzcdn.net/images/artist/032e7d03d75414baf8b73411e6679a13/500x500.jpg",
+    textUnderline: "Afro Pop",
+  },
+  {
+    id: "",
+    overview: "stand strong",
+    to: "/musics/davido",
+    smallTitle: "Davido",
+    imgURL: "https://data.mothership.tools/mothershiptools-ukprod/wp-content/uploads/2021/12/profile.jpg",
+    textUnderline: "Afro Pop",
   },
   {
     imgURL:
@@ -57,6 +74,49 @@ const carousel = [
     to:"/musics/burna"
   },
   {
+    id: "",
+    overview: "Skinny",
+    to: "/musics/lewis",
+    smallTitle: "Dj Lewis",
+    imgURL: "https://media.afriqueshowbiz.com/2022/02/WhatsApp-Image-2021-07-01-at-11.18.39-700x470-1.jpeg",
+    textUnderline: "Coupé décalé",
+  },
+  {
+    id: "39",
+    overview: "Anoumabo est joli",
+    to: "/musics/magic",
+    smallTitle: "Magic System",
+    imgURL:
+      "http://media.nrj.fr/436x327/2014/10/magic-system-fiche_4097.jpg",
+    textUnderline: "Zouglou",
+  },
+  {
+    id: "3",
+    overview: "SOUCOUSS MAKOSSA",
+    to: "/musics/kedjevara",
+    smallTitle: "KEDJEVARA",
+    imgURL: "https://lifemag-ci.com/wp-content/uploads/2019/05/kedjavara-toucher-le-sol.jpg",
+    textUnderline: "Coupé décalé",
+  },
+  {
+    id: "9",
+    overview: "le boss n'est pas méchant",
+    to: "/musics/vda",
+    smallTitle: "VDA",
+    imgURL:
+      "https://lifemag-ci.com/wp-content/uploads/2021/02/vda3.jpg",
+    textUnderline: "Zouglou",
+  },
+  {
+    imgURL:
+      "https://www.letelegramme.fr/images/2020/07/22/en-2019-josman-avait-fait-salle-comble-a-brest-son-retour_5237179.jpg",
+    imageAlt: "JOS",
+    smallTitle: "Josman",
+    overview: "INTRO",
+    textUnderline: "French rap",
+    to:'/musics/intro'
+  },
+  {
     imgURL:
       "https://leclaireur.fnac.com/wp-content/uploads/2022/06/tiakola.jpg",
     imageAlt: "Tiakola",
@@ -64,68 +124,6 @@ const carousel = [
     overview: "Si j'savais",
     textUnderline: "French rap",
     to:'musics/tiakola'
-  },
-  {
-    imgURL:
-      "https://www.leparisien.fr/resizer/EW9yKuTxje7KyQWol5tRdwj2s5w=/932x582/cloudfront-eu-central-1.images.arcpublishing.com/leparisien/46RBYITAIZGUPIRXTKOLZ7OJ6U.jpg",
-    imageAlt: "gazo",
-    smallTitle: "Gazo",
-    overview: "DIE",
-    textUnderline: "French rap",
-    to:'/musics/gazo'
-  },
-  {
-    imgURL: "https://intrld.com/wp-content/uploads/2022/04/nekfeu-1000x600.png",
-    imageAlt: "Nekfeu",
-    smallTitle: "Nekfeu X Nemir",
-    overview: "Elle pleut",
-    textUnderline: "French rap",
-    to:"/musics/nekfeu"
-  },
-  {
-    imgURL:
-      "https://lastfm.freetls.fastly.net/i/u/770x0/71b8da409adceffff81c48b7b07815f8.jpg",
-    imageAlt: "dojaCat",
-    smallTitle: "Doja Cat",
-    overview: "Streets",
-    textUnderline: "R&B",
-    to:'/musics/streets'
-  },
-  {
-    imgURL:
-      "https://i.pinimg.com/564x/8b/c7/8d/8bc78dd6cd9586985485025e102c0826.jpg",
-    imageAlt: "IceSpice",
-    smallTitle: "Ice spice",
-    overview: "Munch(Feelin'U)",
-    textUnderline: "Hip-Hop/Rap",
-    to:"/musics/munch"
-  },
-  {
-    imgURL:
-      "https://cdns-images.dzcdn.net/images/artist/34a786644e1e75a805c78741ad806483/500x500.jpg",
-    imageAlt: "LilTecca",
-    smallTitle: "Lil Tecca",
-    overview: "Ransom",
-    textUnderline: "Hip-Hop/Rap",
-    to:'/musics/tecca'
-  },
-  {
-    imgURL:
-      "https://hiphopcorner.fr/wp-content/uploads/2019/04/image-21-savage-ball-wo-you-clip-1200x900.png",
-    imageAlt: "21Savage",
-    smallTitle: "21 Savage",
-    overview: "Ball w/o you",
-    textUnderline: "Hip-Hop/Rap",
-    to:"/musics/savage"
-  },
-  {
-    imgURL:
-      "https://i1.sndcdn.com/artworks-W8UVjgP3HLQAalti-FguZ3A-t500x500.jpg",
-    imageAlt: "PlayboiCarti",
-    smallTitle: "Playboi Carti",
-    overview: "SKY",
-    textUnderline: "Hip-Hop/Rap",
-    to:"/musics/carti"
   },
 ];
 

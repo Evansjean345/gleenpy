@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 const carousel = [
   {
     imgURL:
-      "https://media2.ledevoir.com/images_galerie/nwd_525042_380313/image.jpg",
-    imageAlt: "allEyesOnMe",
-    smallTitle: "2 pac",
-    overview: "All eyez one me",
-    textUnderline: "1 Tome",
-    to: "/movies/allEyezOnMe",
+      "https://www.francetvinfo.fr/pictures/VWHB00d6zPCXNrNofbIeNiLB1v8/1200x900/2019/12/26/phpk1MucH.jpg",
+    imageAlt: "",
+    smallTitle: "Kirikou",
+    overview: "Kirikou",
+    textUnderline: "aventure",
+    to: "/movies/african/kirikou",
   },
   {
     imgURL:
@@ -21,12 +21,13 @@ const carousel = [
     to: "/movies/theCityOfGod",
   },
   {
-    imgURL: "https://fr.web.img6.acsta.net/pictures/19/07/09/11/04/5921608.jpg",
-    imageAlt: "SAO",
-    smallTitle: "aincrad",
-    overview: " Sword Art Oline",
-    textUnderline: "4 saisons",
-    to: "/movies/anime/sao",
+    imgURL:
+      "https://medias.unifrance.org/medias/247/103/92151/format_page/aya-de-yopougon.jpg",
+    smallTitle: "Aya de yopougon",
+    imageAlt: "",
+    overview: "Aya de yopougon",
+    textUnderline: "Roman graphique",
+    to: "/movies/african/aya",
   },
   {
     imgURL:
@@ -38,33 +39,25 @@ const carousel = [
     to: "/movies/anime/luffy",
   },
   {
-    imgURL: "https://gaak.fr/wp-content/uploads/2019/09/Fairy-Tail-1.jpg",
-    imageAlt: "nicky larson",
-    smallTitle: "city Hunter",
-    overview: "Nicky Larson",
-    textUnderline: "2 saisons",
-    to: "/movies/anime/larson",
+    imgURL: "https://dwgyu36up6iuz.cloudfront.net/heru80fdn/image/upload/c_fill,d_placeholder_thenewyorker.png,fl_progressive,g_face,h_1080,q_80,w_1920/v1435379180/thenewyorker_movie-of-the-week-touki-bouki.jpg",
+    imageAlt: "",
+    smallTitle: "Touki Bouki",
+    overview: "Touki Bouki",
+    textUnderline: "comedie/fiction",
+    to: "/movies/comedie/touki",
   },
   {
     imgURL:
-      "https://www.troyes-obs.fr/wp-content/uploads/2021/03/lucifer-season-5-part-2.jpg",
-    imageAlt: "lucifer",
-    smallTitle: "lucifer",
-    overview: " Lucifer",
-    textUnderline: "6 saisons",
-    to: "/movies/lucifer",
+      "http://img.over-blog-kiwi.com/0/95/30/84/20171023/ob_550ca1_ladona-preview.jpg",
+    imageAlt: "",
+    smallTitle: "La Doña",
+    overview: "La Doña",
+    textUnderline: "Drame",
+    to: "/movies/novelas/dona",
   },
   {
     imgURL:
-      "https://www.animeunited.com.br/oomtumtu/2021/02/0be717d4bb1c6005ddaca95c6275a13d1612261404_main.jpg",
-    imageAlt: "black clover",
-    smallTitle: "Black clover",
-    overview: "Black clover",
-    textUnderline: "4 saisons",
-    to: "/movies/anime/asta",
-  },
-  {
-    imgURL: "https://www.denofgeek.com/wp-content/uploads/2020/02/sex-education-season-2-1-netflix.jpg?resize=768%2C432",
+      "https://www.denofgeek.com/wp-content/uploads/2020/02/sex-education-season-2-1-netflix.jpg?resize=768%2C432",
     imageAlt: "sex education",
     smallTitle: "sex education",
     overview: "Sex education",
@@ -72,7 +65,17 @@ const carousel = [
     to: "/movies/sexEducation",
   },
   {
-    imgURL: "https://www.studioghibli.fr/wp-content/uploads/2009/07/spirited_away1-1024x638.png",
+    imgURL:
+      "https://media2.ledevoir.com/images_galerie/nwd_525042_380313/image.jpg",
+    imageAlt: "allEyesOnMe",
+    smallTitle: "2 pac",
+    overview: "All eyez one me",
+    textUnderline: "1 Tome",
+    to: "/movies/allEyezOnMe",
+  },
+  {
+    imgURL:
+      "https://www.studioghibli.fr/wp-content/uploads/2009/07/spirited_away1-1024x638.png",
     imageAlt: "",
     smallTitle: "Le voyage de chichiro",
     overview: "Le voyage de chichiro",
@@ -80,14 +83,14 @@ const carousel = [
     to: "/movies/home/chichiro",
   },
   {
-    imgURL: "https://static.hitek.fr/img/up_m/152666370/fairytail.jpg",
-    imageAlt: "fairy tail",
-    smallTitle: "Fairy Tail",
-    overview: "Fiary tail",
-    textUnderline: "9 saisons",
-    to: "/movies/anime/lucy",
+    imgURL: "https://img.nbc.com/sites/nbcunbc/files/images/2022/8/18/TIERRADEREYES_S01_EP066_TLMD_1.jpeg",
+    imageAlt: "",
+    smallTitle: "Terre de passion",
+    overview: "Terre de passion",
+    textUnderline: "Telenovela",
+    to: "/movies/novelas/passion",
   },
-  { 
+  {
     imgURL:
       "https://2.bp.blogspot.com/-96r81ZnsZCI/VzRZGsUqsQI/AAAAAAAAkAI/qIGO9xD_bSkCLoj6Cd766pcal7kKWCcbACLcB/s1600/the-human-centipede-2-tom-six-photo-1.jpg",
     imageAlt: "",
@@ -95,6 +98,15 @@ const carousel = [
     overview: "The human centipede",
     textUnderline: "1 tome",
     to: "/movies/theHuman",
+  },
+  {
+    imgURL:
+      "https://www.programme-tv.net/imgre/fit/~2~program~fb1808bd999d6001.jpg/630x355/quality/80/imparfaitement-parfait.jpg",
+    imageAlt: "",
+    smallTitle: "imparfaitement parfait",
+    overview: "imparfaitement parfait",
+    textUnderline: "Drame",
+    to: "/movies/nollywood/parfait",
   },
   {
     imgURL:
@@ -114,15 +126,6 @@ const carousel = [
     textUnderline: "Fiction d'apprentissage",
     to: "/movies/home/kaguya",
   },
-  {
-    imgURL:
-      "https://imgr.cineserie.com/2020/08/annabelle-2-decouvrez-la-precaution-prise-sur-le-tournage-du-film-d-horreur-1.jpg?imgeng=/f_jpg/cmpr_0/w_1200/h_675/m_cropbox&ver=1",
-    imageAlt: "",
-    smallTitle: "annabelle",
-    overview: "Annabelle",
-    textUnderline: "1 tome",
-    to: "/movies/annabelle",
-  },
 ];
 
 export default function SlideHeader() {
@@ -131,7 +134,7 @@ export default function SlideHeader() {
       <div className="carousel carousel-end rounded-box cursor-pointer sm:p-6">
         {carousel.map((items) => {
           return (
-              <div className="carousel-item pr-6 rounded-xl relative">
+            <div className="carousel-item pr-6 rounded-xl relative">
               <Link to={items.to}>
                 <img
                   src={items.imgURL}
@@ -149,8 +152,8 @@ export default function SlideHeader() {
                     {items.textUnderline}
                   </p>
                 </div>
-                </Link>
-              </div>
+              </Link>
+            </div>
           );
         })}
       </div>

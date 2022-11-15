@@ -109,7 +109,7 @@ export default function SliderPrime() {
   return (
     <>
       <div className="bg-black sm:pr-20 sm:pl-20">
-        <p className="mt-2 p-4 text-3xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl">
+        <p className="mt-2 p-4 text-xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl">
           Prime video
           <br />
           <br />

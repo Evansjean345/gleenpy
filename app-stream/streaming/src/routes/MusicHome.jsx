@@ -1,7 +1,6 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import MusicHero from "../components/MusicHero";
-import MusicHomeItems from "../components/MusicHomeItems";
 import Footer from "../layout/Footer";
 import "../index.css";
 import SliderUS from "../musicUS/SliderUS";

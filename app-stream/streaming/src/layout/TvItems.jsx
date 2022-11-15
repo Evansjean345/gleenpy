@@ -34,7 +34,7 @@ export default function TvItems() {
         <div className="bg-black">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl mx-auto py-16 sm:py-24 lg:py-32 lg:max-w-none bg-black">
-              <h2 className="text-3xl font-extrabold text-white">
+              <h2 className="sm:text-3xl text-xl font-extrabold text-white">
                 Programme Tv
 
               </h2>

@@ -5,29 +5,34 @@ function SectionItems() {
   const navigate = useNavigate();
   const items = [
     {
-      id: "1",
-      duration: "3 saisons",
-      to: "/movies/howToSellDrugsOnline",
-      title: "How to sell Drugs Online (Fast)",
-      imageSrc: "https://n-cdn.serienjunkies.de/hq/102266.jpg",
-      imageAlt: "How to sell Drugs Online (Fast)",
-    },
-    {
-      id: "2",
-      duration: "1 saison",
-      to: "/movies/daybreak",
-      title: "Daybreak",
-      imageSrc: "https://i.blogs.es/6d6fae/daybreak/1366_2000.jpeg",
-      imageAlt: "Daybreak",
-    },
-    {
-      id: "3",
-      duration: "4 saisons",
-      to: "/movies/anime/titan",
-      title: "Attack on Titan",
+      duration: "1 tome",
+      to: "/movies/prime/kombat",
+      title: "Mortal Kombat",
       imageSrc:
-        "https://furansujapon.com/wp-content/uploads/2021/05/Shingeki-no-Kyojin-Saison-4-Partie-2.jpg",
-      imageAlt: "Attack on Titan",
+        "https://www.ecranlarge.com/media/cache/1600x1200/uploads/image/001/373/mortal-kombat-affiche-imax-1373724.webp",
+    },
+    {
+      imageSrc:
+        "https://hips.hearstapps.com/hmg-prod/images/melinda-marvin-thth-edit-1625262681.jpg",
+      title: "too hot to handle",
+      duration: "3 saisons",
+      to: "/movies/toHotToHandle",
+    },
+    {
+      imageSrc:
+        "https://thumb.canalplus.pro/http/unsafe/2560x1440/filters:quality(80)/img-hapi.canalplus.pro:80/ServiceImage/ImageID/103279189",
+      imageAlt: "",
+      title: "cauchemar en entreprise",
+      duration: "1 Tome",
+      to: "/movies/nollywood/entreprise",
+    },
+    {
+      imageSrc:
+        "https://occ-0-993-1433.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABciz-LoOZltDxV04Q7SQq6iPsQl9yXG5iTQHNZtQQgl2sxw1wyzDmBuB312lz8dDfSNPcEf6-nqROmcM7DTh1NURZvl7pkN-gULy.jpg?r=c75",
+      imageAlt: "",
+      title: "On n'arrête plus les Kandasamys",
+      duration: "comedie",
+      to: "/movies/comedie/arrete",
     },
     {
       id: "4",
@@ -39,15 +44,6 @@ function SectionItems() {
       imageAlt: "Naruto Shippuden",
     },
     {
-      id: "5",
-      duration: "5 saisons",
-      to: "/movies/anime/soma",
-      title: "Foods Wars",
-      imageSrc:
-        "https://fr.web.img2.acsta.net/pictures/19/09/02/16/43/5616917.jpg",
-      imageAlt: "Foods Wars",
-    },
-    {
       id: "6",
       duration: "1 saison",
       to: "/movies/behindHerEyes",
@@ -57,22 +53,21 @@ function SectionItems() {
       imageAlt: "Mon ami Adèle - Behind Her eyes",
     },
     {
+      imageSrc:
+        "https://decider.com/wp-content/uploads/2020/07/SERIOUSLY-SINGLE-REVIEW.jpg?quality=75&strip=all",
+      imageAlt: "",
+      title: "Seriously Single",
+      duration: "comedie",
+      to: "/movies/comedie/single",
+    },
+    {
       id: "7",
       duration: "2 saisons",
       to: "/movies/euphoria",
       title: "Euphoria",
       imageSrc:
-        "https://outwritenewsmag.org/wp-content/uploads/2022/02/IMG_5081.jpg",
+        "https://imgix.bustle.com/uploads/image/2022/1/14/6b0cf8f4-3081-4809-972f-ef6a79c476e4-0110_euphoria.jpeg?w=1200&h=1000&fit=crop&crop=focalpoint&auto=format%2Ccompress&fp-x=0.4093&fp-y=0.34",
       imageAlt: "Euphoria",
-    },
-    {
-      id: "8",
-      imageSrc:
-        "https://img.lemde.fr/2018/09/17/19/186/1568/784/1440/720/60/0/bd2548b_I8SaNOIQgKXkQ3u_F-Zv-N2f.jpg",
-      imageAlt: "la Nonne",
-      title: "La Nonne",
-      duration: "1 tome",
-      to: "/movies/laNonne",
     },
   ];
 
@@ -81,7 +76,7 @@ function SectionItems() {
       <article>
         <div className="bg-black">
           <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-            <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl">
+            <p className="mt-2 text-2xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl">
               Nos programmes
             </p>
             <br />

@@ -4,31 +4,26 @@ import { Link } from "react-router-dom";
 function SectionHeader() {
   const callouts = [
     {
-      id: "1",
-      duration: "3 saisons",
-      title: "Too hot to Handle",
+      duration: "1 tome",
+      to: "/movies/prime/black",
+      title: "BlacKkKlansman : J'ai infiltré le Ku Klux Klan",
       imageSrc:
-        "https://www.etonline.com/sites/default/files/styles/max_1280x720/public/images/2021-06/PIP_207_Unit_00019_RT.jpg?h=c673cd1c&itok=YiEQcwVE",
-      imageAlt: "Too hot to Handle",
-      to: "/movies/toHotToHandle",
+      "https://musicart.xboxlive.com/7/d8d25000-0000-0000-0000-000000000002/504/image.jpg?w=1920&h=1080",
     },
     {
-      id: "2",
-      duration: "3 saisons",
-      title: "You",
       imageSrc:
-        "https://media.gqmagazine.fr/photos/616d49b5d4bd52e104c66b87/16:9/w_2560%2Cc_limit/you.jpeg",
-      imageAlt: "You",
-      to: "/movies/you",
+        "https://tvseriesfinale.com/wp-content/uploads/2019/10/daybreak02.jpg",
+      duration: "1 saison",
+      title: "DayBreak",
+      imageAlt: "DayBreak",
+      to: "/movies/daybreak",
     },
     {
-      id: "3",
-      duration: "5 saisons",
-      title: "Elite",
-      imageSrc:
-        "https://pictures.betaseries.com/fonds/poster/00ef3a490e75ebdc66716656235b0cfd.jpg",
-      imageAlt: "Collection of four insulated travel bottles on wooden shelf.",
-      to: "/movies/elite",
+      imageSrc: "https://fr.web.img5.acsta.net/pictures/17/01/19/09/32/389842.jpg",
+      imageAlt: "",
+      title: "Bienvenue au Gondwana",
+      duration: "comedie",
+      to: "/movies/comedie/bienvenue",
     },
   ];
   return (
@@ -37,8 +32,8 @@ function SectionHeader() {
         <div className="bg-black">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl mx-auto py-16 sm:py-24 lg:py-32 lg:max-w-none bg-black">
-              <h2 className="text-3xl font-extrabold text-white">
-                Les plus vues
+              <h2 className="sm:text-3xl text-xl font-extrabold text-white">
+                Aperçu des programmes
               </h2>
               <br />
               <br />

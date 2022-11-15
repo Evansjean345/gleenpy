@@ -39,7 +39,7 @@ export default function ShareItems() {
           <article>
         <div className="bg-black">
           <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-            <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl">
+            <p className="mt-2 text-xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl">
               Les derniers gbairai
             </p>
             <br />
