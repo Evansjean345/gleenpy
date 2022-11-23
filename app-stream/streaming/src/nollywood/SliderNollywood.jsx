@@ -11,7 +11,7 @@ const carousel = [
     to: "/movies/nollywood/deux",
   },
   {
-    imgURL: "https://i.ytimg.com/vi/xf6sgFW0GoA/maxresdefault.jpg",
+    imgURL: "https://afrozitv.com/wp-content/uploads/2022/09/le-coeur-du-veritable-amour.jpg",
     imageAlt: "",
     smallTitle: "Coeur du véritable amour",
     overview: "Coeur du véritable amour",
@@ -35,7 +35,7 @@ const carousel = [
     to: "/movies/nollywood/vendeuse",
   },
   {
-    imgURL: "https://i.ytimg.com/vi/OsrKSCJ4jEM/maxresdefault.jpg",
+    imgURL: "https://www.programme-tv.net/imgre/fit/~2~program~5f5f5694a58b7bb4.jpg/1160x500/crop-from/top/quality/80/cr/wqkgTm9sbHl3b29kIFRW/l-ange-noir.jpg",
     imageAlt: "",
     smallTitle: "Ange de l'amour",
     overview: "Ange de l'amour",

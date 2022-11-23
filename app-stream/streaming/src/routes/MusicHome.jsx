@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import MusicHero from "../components/MusicHero";
 import Footer from "../layout/Footer";
@@ -10,8 +10,16 @@ import SliderIV from "../musicIvoire/SliderIV";
 import SliderAfro from "../musicAfro/SliderAfro";
 import SliderCoupe from "../musicCoupe/SliderCoupe";
 import SliderZouglou from "../musicZouglou/SliderZouglou";
+import SliderRumba from "../musicRumba/SliderRumba";
+import SliderGospel from "../musicGospel/SliderGospel";
+import SliderRagga from "../musicRagga/SliderRaggae";
+import SliderAll from "../musicAllStars/SliderAll";
+import SliderHerbe from "../musicEnHerbe/SliderHerbe";
 
 export default function MusicHome() {
+  const [allstars, setAllstars] = useState(false);
+  const [grass, setGrass] = useState(false);
+
   return (
     <>
       <div className="bg-black m-0 p-0 h-[100vh] w-full">
@@ -84,18 +92,8 @@ export default function MusicHome() {
                   </Link>
                 </li>
                 <li>
-                  <Link to="#" className="hover:bg-red-900">
+                  <Link to="/lyricsHome" className="hover:bg-red-900">
                     paroles de vie
-                  </Link>
-                </li>
-                <li>
-                  <Link to="#" className="hover:bg-red-900">
-                    les meilleurs
-                  </Link>
-                </li>
-                <li>
-                  <Link to="#" className="hover:bg-red-900">
-                    débutants
                   </Link>
                 </li>
                 <li>
@@ -146,18 +144,8 @@ export default function MusicHome() {
                 </Link>
               </li>
               <li>
-                <Link to="#" className="hover:bg-red-900">
+                <Link to="/lyricsHome" className="hover:bg-red-900">
                   Paroles de vie
-                </Link>
-              </li>
-              <li>
-                <Link to="#" className="hover:bg-red-900">
-                  les meilleurs
-                </Link>
-              </li>
-              <li>
-                <Link to="#" className="hover:bg-red-900">
-                  débutants
                 </Link>
               </li>
               <li>
@@ -170,25 +158,71 @@ export default function MusicHome() {
           {/*Nav PC version End */}
           <div id="logo" className="navbar-end">
             <Link to="" className=" bg-black text-red-700 text-2xl font-bold ">
-            Gleenpy
+              Gleenpy
             </Link>
           </div>
         </NavLink>
+        <br />
+        <br />
+        <br />
+        <br />
+        <div className="btn-group grid grid-cols-2 gap-1 bg-black">
+          <button
+            onClick={() => {
+              setAllstars(!allstars);
+              setGrass(false);
+            }}
+            className="hover:bg-red-900 text-md lg:hover:text-lg rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
+          >
+            All Stars
+          </button>
+          <button
+            onClick={() => {
+              setGrass(!grass);
+              setAllstars(false);
+            }}
+            className="hover:bg-red-900 text-md lg:hover:text-lg rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
+          >
+            En Herbe
+          </button>
+        </div>
+        <br />
         <MusicHero />
         <div className="bg-black">
-          <SliderCoupe />
-          <br />
-          <SliderIV />
-          <br />
-          <SliderAfro />
-          <br />
-          <SliderZouglou/>
-          <br/>
-          <SliderUS />
-          <br />
-          <SliderFR />
-          <br />
-          <SliderPop />
+          {!allstars && !grass ? (
+            <div>
+              <SliderCoupe />
+              <br />
+              <SliderZouglou />
+              <br />
+              <SliderRumba />
+              <br />
+              <SliderAfro />
+              <br />
+              <SliderIV />
+              <br />
+              <SliderGospel />
+              <br />
+              <SliderRagga />
+              <br />
+              <SliderUS />
+              <br />
+              <SliderFR />
+              <br />
+              <SliderPop />
+            </div>
+          ) : (
+            <div className={grass ? "hidden" : ""}>
+              <SliderAll />
+            </div>
+          )}
+          {!grass ? (
+            <div></div>
+          ) : (
+            <div>
+              <SliderHerbe />
+            </div>
+          )}
         </div>
         <Footer />
       </div>

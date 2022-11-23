@@ -11,6 +11,15 @@ const carousel = [
           "https://i0.wp.com/bwelitribe.com/wp-content/uploads/2022/08/300635916_5217977094985429_1942704835354281072_n.jpg?fit=1080%2C1115&ssl=1",
         imageAlt: "en haut",
       },
+    {
+        id: "2",
+        title: "WILIKIDJONDJON",
+        to: "/musics/fior",
+        artist: "FIOR2BIOR X WIDGUNZ",
+        imageSrc:
+          "https://www.afromicro.com/File/Musics/Pochettes/Grand/1122_Fior-2-Bior-feat-Widgunz-Wilikidjondjon.jpg",
+        imageAlt: "en haut",
+      },
       {
         id: "29",
         title: "Dora",
@@ -30,12 +39,30 @@ const carousel = [
         imageAlt: "Marie Pierre",
       },
       {
+        id: "7",
+        title: "Cherie coco",
+        to: "/musics/coco",
+        artist: "didi B X Black K X 3xdavs",
+        imageSrc:
+          "https://i0.wp.com/bwelitribe.com/wp-content/uploads/2022/10/312655164_660682315434304_2263490710166496575_n.jpeg?fit=1440%2C961&ssl=1",
+        imageAlt: "",
+      },
+      {
         id: "30",
         title: "Gnapka",
         to: "/musics/luck",
         artist: "Mr Luck",
         imageSrc:
           "https://lafropeen.fr/storage/app/articles/images/fO8xRAwmydyfMYaFk5pW5pCtjChDEyOckrQ9eCEE.png",
+        imageAlt: "",
+      },
+      {
+        id: "",
+        title: "Dans ma tête",
+        to: "/musics/suspect",
+        artist: "Suspect 95",
+        imageSrc:
+          "https://l-frii.com/wp-content/uploads/2021/03/Syndicat-le-president-Suspect-95-insiste-sur-le-prix-du-transport-2.jpg",
         imageAlt: "",
       },
       {

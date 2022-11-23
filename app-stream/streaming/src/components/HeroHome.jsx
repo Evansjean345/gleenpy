@@ -16,7 +16,7 @@ export default function HeroHome() {
               <b>
                 {" "}
                 Regarder vos films préférés sur gleenpy ,
-                ecouter les meilleurs sons de vos stars et devellopons la culture Africaine
+                ecouter les meilleurs sons de vos stars et developons la culture Africaine
               </b>
             </h1>
           </div>
@@ -25,7 +25,7 @@ export default function HeroHome() {
               <b>
                 Regarder vos films préférés sur gleenpy ,
                 <br />
-                ecouter les meilleurs sons de vos stars et devellopons la culture Africaine
+                ecouter les meilleurs sons de vos stars et developons la culture Africaine
               </b>
             </h1>
           </div>

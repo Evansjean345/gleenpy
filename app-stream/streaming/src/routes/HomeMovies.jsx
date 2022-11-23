@@ -14,10 +14,9 @@ import SliderNetflix from "../netflix/SliderNetflix";
 import SliderPrime from "../prime/SliderPrime";
 
 export default function HomeMovies() {
-  const netflix = useRef(null);
   const prime = useRef(null);
   const nollywood = useRef(null);
-  const disney = useRef(null);
+  const african = useRef(null);
 
   const scrollToSection = (elementRef) => {
     window.scrollTo({
@@ -94,18 +93,8 @@ export default function HomeMovies() {
                   </Link>
                 </li>
                 <li>
-                  <Link to="#" className="hover:bg-red-900">
+                  <Link to="/lyricsHome" className="hover:bg-red-900">
                     paroles de vie
-                  </Link>
-                </li>
-                <li>
-                  <Link to="#" className="hover:bg-red-900">
-                    les meilleurs
-                  </Link>
-                </li>
-                <li>
-                  <Link to="#" className="hover:bg-red-900">
-                    débutants
                   </Link>
                 </li>
                 <li>
@@ -153,18 +142,8 @@ export default function HomeMovies() {
                 </Link>
               </li>
               <li>
-                <Link to="#" className="hover:bg-red-900">
+                <Link to="/lyricsHome" className="hover:bg-red-900">
                   Paroles de vie
-                </Link>
-              </li>
-              <li>
-                <Link to="#" className="hover:bg-red-900">
-                  les meilleurs
-                </Link>
-              </li>
-              <li>
-                <Link to="#" className="hover:bg-red-900">
-                  débutants
                 </Link>
               </li>
               <li>
@@ -177,7 +156,7 @@ export default function HomeMovies() {
           {/*Nav PC version End */}
           <div id="logo" className="navbar-end">
             <Link to="" className=" bg-black text-red-700 text-2xl font-bold ">
-            Gleenpy
+              Gleenpy
             </Link>
           </div>
         </NavLink>
@@ -185,15 +164,13 @@ export default function HomeMovies() {
         <br />
         <br />
         <br />
-        <div className="btn-group grid grid-cols-4 gap-1 bg-black">
-          <button
-            onClick={() => {
-              scrollToSection(netflix);
-            }}
-            className="hover:bg-red-900 text-md lg:hover:text-lg rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
+        <div className="btn-group grid grid-cols-4 gap-1  bg-black">
+          <a
+            href="https://www.netflix.com/ci/"
+            className="flex items-center justify-center hover:bg-red-900 text-md lg:hover:text-lg rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
           >
             NETFLIX
-          </button>
+          </a>
           <button
             onClick={() => {
               scrollToSection(prime);
@@ -212,11 +189,11 @@ export default function HomeMovies() {
           </button>
           <button
             onClick={() => {
-              scrollToSection(disney);
+              scrollToSection(african);
             }}
             className="hover:bg-red-900 text-md lg:hover:text-lg rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
           >
-            DISNEY
+            AFRICAIN
           </button>
         </div>
         <br />
@@ -230,7 +207,7 @@ export default function HomeMovies() {
           </section>
           <br />
           <br />
-          <section>
+          <section ref={african}>
             <SliderAfrican />
           </section>
           <br />
@@ -240,7 +217,7 @@ export default function HomeMovies() {
           </section>
           <br />
           <br />
-          <section ref={netflix}>
+          <section>
             <SliderNetflix />
           </section>
           <br />

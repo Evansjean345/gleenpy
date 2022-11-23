@@ -238,6 +238,35 @@ import Pro from "./musicZouglou/Pro";
 import Fashion from "./musicZouglou/Fashion";
 import Fitini from "./musicZouglou/Fitini";
 import Soum from "./musicZouglou/Soum";
+import Coco from "./musicIvoire/Coco";
+import Suspect from "./musicIvoire/Suspect";
+import Fior from "./musicIvoire/Fior";
+import LyricsHome from "./routes/LyricsHome";
+import Kodja from "./parole/Kodja";
+import Lyrics from "./parole/Lyrics";
+import Gedeon from "./parole/Gedeon";
+import Bishop from "./parole/Bishop";
+import Tunasi from "./parole/Tunasi";
+import Sanogo from "./parole/Sanogo";
+import Fally from "./musicRumba/Fally";
+import Koffi from "./musicRumba/Koffi";
+import Fere from "./musicRumba/Fere";
+import Werrason from "./musicRumba/Werrason";
+import Cindy from "./musicRumba/Cindy";
+import Sorry from "./musicRumba/Ninita";
+import Dena from "./musicGospel/Dena";
+import Kirk from "./musicGospel/Kirk";
+import Mbiye from "./musicGospel/Mbiye";
+import Debo from "./musicGospel/Debo";
+import Cece from "./musicGospel/Cece";
+import Ks from "./musicGospel/Ks";
+import Okit from "./musicGospel/Okit";
+import Bob from "./musicRagga/Bob";
+import Blondy from "./musicRagga/Alpha";
+import Luciano from "./musicRagga/Luciano";
+import Buju from "./musicRagga/Buju";
+import Marcia from "./musicRagga/Marcia";
+import Tosh from "./musicRagga/Tosh";
 
 function App() {
   return (
@@ -442,30 +471,56 @@ function App() {
           <Route path="/musics/tayc" element={<Tayc />} />
           <Route path="/musics/davido" element={<Davido />} />
           <Route path="/musics/Wizkid" element={<Wizkid />} />
-          <Route path="/musics/Wandae" element={<Wandae/>} />
-          <Route path="/musics/joeboy" element={<Joeboy/>} />
-          <Route path="/musics/jagaban" element={<Midas/>} />
+          <Route path="/musics/Wandae" element={<Wandae />} />
+          <Route path="/musics/joeboy" element={<Joeboy />} />
+          <Route path="/musics/jagaban" element={<Midas />} />
           {/*coupé décalé */}
-          <Route path="/musics/molare" element={<Molare/>} />
-          <Route path="/musics/dose" element={<Dose/>} />
-          <Route path="/musics/arafat" element={<Arafat/>} />
-          <Route path="/musics/bebi" element={<Bebi/>} />
-          <Route path="/musics/ariel" element={<Ariel/>} />
-          <Route path="/musics/lewis" element={<Lewis/>} />
-          <Route path="/musics/vetcho" element={<Vetcho/>} />
-          <Route path="/musics/debordo" element={<Debordo/>} />
-          <Route path="/musics/kedjevara" element={<Kedjevara/>} />
-          <Route path="/musics/mix" element={<Mix/>} />
+          <Route path="/musics/molare" element={<Molare />} />
+          <Route path="/musics/dose" element={<Dose />} />
+          <Route path="/musics/arafat" element={<Arafat />} />
+          <Route path="/musics/bebi" element={<Bebi />} />
+          <Route path="/musics/ariel" element={<Ariel />} />
+          <Route path="/musics/lewis" element={<Lewis />} />
+          <Route path="/musics/vetcho" element={<Vetcho />} />
+          <Route path="/musics/debordo" element={<Debordo />} />
+          <Route path="/musics/kedjevara" element={<Kedjevara />} />
+          <Route path="/musics/mix" element={<Mix />} />
           {/*Zouglou */}
-          <Route path="/musics/magic" element={<Magic/>} />
-          <Route path="/musics/yode" element={<Yode/>} />
-          <Route path="/musics/vda" element={<VDA/>} />
-          <Route path="/musics/patron" element={<Patrons/>} />
-          <Route path="/musics/denis" element={<Denis/>} />
-          <Route path="/musics/pro" element={<Pro/>} />
-          <Route path="/musics/fashion" element={<Fashion/>} />
-          <Route path="/musics/fitini" element={<Fitini/>} />
-          <Route path="/musics/soum" element={<Soum/>} />
+          <Route path="/musics/magic" element={<Magic />} />
+          <Route path="/musics/yode" element={<Yode />} />
+          <Route path="/musics/vda" element={<VDA />} />
+          <Route path="/musics/patron" element={<Patrons />} />
+          <Route path="/musics/denis" element={<Denis />} />
+          <Route path="/musics/pro" element={<Pro />} />
+          <Route path="/musics/fashion" element={<Fashion />} />
+          <Route path="/musics/fitini" element={<Fitini />} />
+          <Route path="/musics/soum" element={<Soum />} />
+          {/* Rap IV */}
+          <Route path="/musics/coco" element={<Coco />} />
+          <Route path="/musics/suspect" element={<Suspect />} />
+          <Route path="/musics/fior" element={<Fior />} />
+          {/* Rumba */}
+          <Route path="/musics/fally" element={<Fally />} />
+          <Route path="/musics/femme" element={<Koffi />} />
+          <Route path="/musics/fere" element={<Fere />} />
+          <Route path="/musics/werrason" element={<Werrason />} />
+          <Route path="/musics/cindy" element={<Cindy />} />
+          <Route path="/musics/sorry" element={<Sorry />} />
+          {/* Dena */}
+          <Route path="/musics/dena" element={<Dena />} />
+          <Route path="/musics/kirk" element={<Kirk />} />
+          <Route path="/musics/mbiye" element={<Mbiye />} />
+          <Route path="/musics/debo" element={<Debo />} />
+          <Route path="/musics/cece" element={<Cece />} />
+          <Route path="/musics/ks" element={<Ks />} />
+          <Route path="/musics/okit" element={<Okit />} />
+          {/* Raggae */}
+          <Route path="/musics/love" element={<Bob />} />
+          <Route path="/musics/blondy" element={<Blondy/>} />
+          <Route path="/musics/luciano" element={<Luciano/>} />
+          <Route path="/musics/buju" element={<Buju/>} />
+          <Route path="/musics/marcia" element={<Marcia/>} />
+          <Route path="/musics/tosh" element={<Tosh/>} />
         </Route>
         {/*Gag Home */}
         <Route path="/gagHome" element={<GagHome />} />
@@ -496,6 +551,17 @@ function App() {
           <Route path="/tv/battement" element={<Battement />} />
           <Route path="/tv/school" element={<School />} />
         </Route>
+        {/* Paroles de Vie */}
+        <Route path="/lyricsHome" element={<LyricsHome />} />
+        {/* Paroles de Vie Nested Routes */}
+        <Route path="/lyrics" element={<Lyrics />}>
+          <Route path="/lyrics/kodja" element={<Kodja />} />
+          <Route path="/lyrics/gede" element={<Gedeon />} />
+          <Route path="/lyrics/bishop" element={<Bishop />} />
+          <Route path="/lyrics/tunasi" element={<Tunasi />} />
+          <Route path="/lyrics/sanogo" element={<Sanogo />} />
+        </Route>
+        {/* About */}
         <Route path="/abouts" element={<About />} />
       </Routes>
     </div>

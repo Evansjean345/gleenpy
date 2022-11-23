@@ -73,18 +73,8 @@ export default function TvHome() {
                 </Link>
               </li>
               <li>
-                <Link to="#" className="hover:bg-red-900">
+                <Link to="/lyricsHome" className="hover:bg-red-900">
                   paroles de vie
-                </Link>
-              </li>
-              <li>
-                <Link to="#" className="hover:bg-red-900">
-                  les meilleurs
-                </Link>
-              </li>
-              <li>
-                <Link to="#" className="hover:bg-red-900">
-                  débutants
                 </Link>
               </li>
               <li>
@@ -132,18 +122,8 @@ export default function TvHome() {
               </Link>
             </li>
             <li>
-              <Link to="#" className="hover:bg-red-900">
+              <Link to="/lyricsHome" className="hover:bg-red-900">
                 Paroles de vie
-              </Link>
-            </li>
-            <li>
-              <Link to="#" className="hover:bg-red-900">
-                les meilleurs
-              </Link>
-            </li>
-            <li>
-              <Link to="#" className="hover:bg-red-900">
-                débutants
               </Link>
             </li>
             <li>
