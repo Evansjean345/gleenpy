@@ -10,7 +10,7 @@ export default function ContactForm() {
 
     emailjs
       .sendForm(
-        "service_itekpwn",
+        "service_8yyzb5u",
         "template_440thif",
         form.current,
         "_MGJOaxO8f0uSDlVt"
