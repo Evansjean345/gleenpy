@@ -10,10 +10,10 @@ export default function ContactForm() {
 
     emailjs
       .sendForm(
-        "service_mhum3tp",
-        "template_0nyi8lg",
+        "service_itekpwn",
+        "template_440thif",
         form.current,
-        "sBeL3XzbDMBnqqEin"
+        "_MGJOaxO8f0uSDlVt"
       )
       .then(
         (result) => {
@@ -270,6 +270,7 @@ export default function ContactForm() {
                     <textarea
                       class="block w-full h-32 px-5 py-3 mt-2 text-gray-300 placeholder-gray-400 bg-black border border-gray-200  md:h-48 dark:placeholder-gray-600 bg-black-900  dark:border-gray-700 focus:border-red-700 dark:focus:border-red-700 focus:ring-red-700 focus:outline-none focus:ring focus:ring-opacity-40"
                       placeholder="Message"
+                      name="message"
                     ></textarea>
                   </div>
 
