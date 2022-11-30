@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import "../index.css";
+import Footer from "../layout/Footer";
 import HeroLive from "../layout/HeroLive";
 import ShareItems from "../layout/ShareItems";
 
@@ -79,7 +80,7 @@ export default function DirectHome() {
               </li>
               <li>
                 <Link to="/abouts" className="hover:bg-red-900">
-                  Parteners
+                Partenaires
                 </Link>
               </li>
             </ul>
@@ -128,7 +129,7 @@ export default function DirectHome() {
             </li>
             <li>
               <Link to="/abouts" className="hover:bg-red-900">
-                Parteners
+              Partenaires
               </Link>
             </li>
           </ul>
@@ -142,6 +143,7 @@ export default function DirectHome() {
       </NavLink>
       <HeroLive/>
       <ShareItems/>
+      <Footer/>
     </div>
   );
 }

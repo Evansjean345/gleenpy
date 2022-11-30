@@ -84,7 +84,7 @@ export default function LyricsHome() {
                 </li>
                 <li>
                   <Link to="/abouts" className="hover:bg-red-900">
-                    Parteners
+                  Partenaires
                   </Link>
                 </li>
               </ul>
@@ -133,7 +133,7 @@ export default function LyricsHome() {
               </li>
               <li>
                 <Link to="/abouts" className="hover:bg-red-900">
-                  Parteners
+                Partenaires
                 </Link>
               </li>
             </ul>

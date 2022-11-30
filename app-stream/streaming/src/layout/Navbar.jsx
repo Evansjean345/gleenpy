@@ -77,7 +77,7 @@ function Navbar() {
               </li>
               <li>
                 <Link to="/abouts" className="hover:bg-red-900">
-                  Parteners
+                Partenaires
                 </Link>
               </li>
             </ul>
@@ -126,7 +126,7 @@ function Navbar() {
             </li>
             <li>
               <Link to="/abouts" className="hover:bg-red-900">
-                Parteners
+              Partenaires
               </Link>
             </li>
           </ul>

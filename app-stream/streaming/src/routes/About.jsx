@@ -80,7 +80,7 @@ export default function About() {
                 </li>
                 <li>
                   <Link to="/abouts" className="hover:bg-red-900 bg-red-700">
-                    Parteners
+                    Partenaires
                   </Link>
                 </li>
               </ul>
@@ -129,7 +129,7 @@ export default function About() {
               </li>
               <li>
                 <Link to="/abouts" className="hover:bg-red-900 bg-red-700">
-                  Parteners
+                  Partenaires
                 </Link>
               </li>
             </ul>
@@ -137,7 +137,7 @@ export default function About() {
           {/*Nav PC version End */}
           <div id="logo" className="navbar-end">
             <Link to="" className=" bg-black text-red-700 text-2xl font-bold ">
-              Glingpy
+              Gleenpy
             </Link>
           </div>
         </NavLink>

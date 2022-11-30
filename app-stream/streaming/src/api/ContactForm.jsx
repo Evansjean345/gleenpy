@@ -1,8 +1,11 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import emailjs from "@emailjs/browser";
 
 export default function ContactForm() {
   ///////////////////////////////
+  const [show1, setshow1] = useState(true);
+  const [show2, setshow2] = useState(false);
+  const [show3, setshow3] = useState(false);
   const form = useRef();
 
   const sendEmail = (e) => {
@@ -29,11 +32,33 @@ export default function ContactForm() {
 
   return (
     <>
+      <div className="2xl:mx-auto 2xl:container py-12 lg:px-20 md:px-6 px-4 bg-black">
+        <div className="w-full flex flex-col justify-center items-center mt-0 xl:mt-2">
+          <div className="flex flex-col justify-start items-start text-start space-y-4 w-full sm:pl-0">
+            <h1 class="text-3xl font-semibold  capitalizetext-white lg:text-5xl text-white">
+              Nos
+              <br />
+              Partenaires
+            </h1>
+          </div>
+          <div className=" grid grid-cols-1 sm:grid-cols-2 w-full lg:grid-cols-3  justify-items-around gap-x-6 gap-y-6 xl:gap-x-8 mt-16 border-b-2 border-white pb-10 border-t-2 pt-10 xl:p-10">
+            <a href="https://www.nollywoodtv.fr/" alt="">
+              <div className="w-full lg:hover:opacity-90 lg:hover:scale-110 transition-all h-[200px] focus:outline-none border focus:border-gray-800 border-transparent bg-gray-50 flex justify-center items-center flex-col text-center py-14 px-12 space-y-6  bg-[url('https://www.nollywoodtv.fr/wp-content/uploads/2020/12/Nollywood_TV_Logo_Colour.png')] bg-cover bg-center bg-contain bg-no-repeat rounded-lg  "></div>
+            </a>
+            <a href="https://fespaco.org/" alt="">
+              <div className="w-full h-[200px] lg:hover:opacity-90 lg:hover:scale-110 transition-all focus:outline-none border focus:border-gray-800 border-transparent bg-gray-50 flex justify-center items-center flex-col text-center py-14 px-12 space-y-6 bg-[url('https://presse.tv5monde.com/wp-content/uploads/2017/02/616925.jpg')] bg-cover bg-center bg-contain rounded-lg "></div>
+            </a>
+            <a href="https://www.sacem.fr/" alt="">
+              <div className="w-full h-[200px] lg:hover:opacity-90  lg:hover:scale-110 transition-all focus:outline-none border focus:border-gray-800 border-transparent bg-black flex justify-center items-center flex-col text-center py-14 px-12 space-y-6  bg-[url('https://upload.wikimedia.org/wikipedia/fr/thumb/9/9b/Logo_Sacem_-_2020.svg/1200px-Logo_Sacem_-_2020.svg.png')] bg-cover bg-center bg-contain bg-no-repeat rounded-lg  "></div>
+            </a>
+          </div>
+        </div>
+      </div>
       {/* */}
       <section class="bg-black text-white">
         <div class="container px-6 py-12 mx-auto">
           <div class="lg:flex lg:items-center lg:-mx-6">
-            <div class="lg:w-1/2 lg:mx-6">
+            <div class="lg:w-1/2 lg:mx-6 lg:mb-80">
               <h1 class="text-3xl font-semibold  capitalizetext-white lg:text-5xl">
                 Espace
                 <br />
@@ -63,7 +88,7 @@ export default function ContactForm() {
                   </svg>
 
                   <span class="mx-2  truncate w-72 text-white">
-                    Cecilia Chapman 711-2880 Nulla St. Mankato Mississippi 96522
+                    Abidjan | Côte d'Ivoire
                   </span>
                 </p>
 
@@ -84,7 +109,7 @@ export default function ContactForm() {
                   </svg>
 
                   <span class="mx-2  truncate w-72 text-white">
-                    (257) 563-7401
+                    Tel : (+225) 0707400716 / 0504921096
                   </span>
                 </p>
 
@@ -104,7 +129,9 @@ export default function ContactForm() {
                     />
                   </svg>
 
-                  <span class="mx-2 truncate w-72 ">acb@example.com</span>
+                  <span class="mx-2 truncate w-72 ">
+                    E-mail : partenaire@csn-ci.com
+                  </span>
                 </p>
               </div>
 
@@ -189,9 +216,9 @@ export default function ContactForm() {
             </div>
 
             <div class="mt-8 lg:w-1/2 lg:mx-6">
-              <div class="w-full px-8 py-10 mx-auto overflow-hidden bg-black rounded-lg shadow-2xl lg:max-w-xl shadow-gray-300/50 dark:shadow-black/50">
-                <h1 class="text-lg font-medium text-white">
-                  Devenez Partenaires
+              <div class="w-full px-8 py-10 mx-auto overflow-hidden bg-black rounded-lg shadow-2xl lg:max-w-xl shadow-gray-300/50 ">
+                <h1 class="text-3xl font-semibold  capitalizetext-white lg:text-3xl text-white">
+                  Devenez Partenaire
                 </h1>
 
                 <form class="mt-6" ref={form} onSubmit={sendEmail}>
@@ -200,14 +227,15 @@ export default function ContactForm() {
                       class="block font-semibold mb-2 text-sm text-white "
                       for="name"
                     >
-                      Full Name
+                      Nom et prénoms
                     </label>
                     <input
                       id="name"
                       name="from_name"
                       type="text"
-                      placeholder="John Doe"
+                      placeholder="Entrez votre nom"
                       class="block w-full px-5 py-3 mt-2 text-gray-300 placeholder-gray-400 bg-black border border-gray-200  dark:placeholder-gray-600 dark:text-gray-300 dark:border-gray-700 focus:border-red-700 dark:focus:border-red-700 focus:ring-red-700 focus:outline-none focus:ring focus:ring-opacity-40"
+                      required
                     />
                   </div>
 
@@ -222,8 +250,9 @@ export default function ContactForm() {
                       id="email"
                       name="email"
                       type="email"
-                      placeholder="johndoe@example.com"
+                      placeholder="entrez votre addresse mail"
                       class="block w-full px-5 py-3 mt-2 text-gray-300 placeholder-gray-400 bg-black border border-gray-200  dark:placeholder-gray-600 dark:text-gray-300 dark:border-gray-700 focus:border-red-700 dark:focus:border-red-700 focus:ring-red-700 focus:outline-none focus:ring focus:ring-opacity-40"
+                      required
                     />
                   </div>
                   <div class="flex-1 mt-6 ">
@@ -239,12 +268,15 @@ export default function ContactForm() {
                         class="text-white font-bold w-full bg-black   border border-gray-300 focus:border-red-500 focus:ring-2 focus:ring-red-500 text-base outline-none  py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                         id="work"
                         color="black"
+                        required
                       >
-                        <option value="videaste" class="hover:bg-red-700">videaste</option>
+                        <option value="videaste" class="hover:bg-red-700">
+                          veuillez selectionnez une option
+                        </option>
+                        <option value="videaste">videaste</option>
                         <option value="entreprise">entreprise</option>
                         <option value="artiste">artiste</option>
                         <option value="particulier">particulier</option>
-                     
                       </select>
                     </div>
                   </div>
@@ -260,16 +292,20 @@ export default function ContactForm() {
                       id="tel"
                       name="number"
                       type="text"
-                      placeholder="John Doe"
+                      placeholder="entrez votre numero de telephone"
                       class="block w-full px-5 py-3 mt-2 text-gray-300 placeholder-gray-400 bg-black border border-gray-200  dark:placeholder-gray-600 dark:text-gray-300 dark:border-gray-700 focus:border-red-700 dark:focus:border-red-700 focus:ring-red-700 focus:outline-none focus:ring focus:ring-opacity-40"
+                      required
                     />
                   </div>
 
                   <div class="w-full mt-6">
-                    <label class="block mb-2 text-sm text-white font-semibold">Message</label>
+                    <label class="block mb-2 text-sm text-white font-semibold">
+                      Message
+                    </label>
                     <textarea
                       class="block w-full h-32 px-5 py-3 mt-2 text-gray-300 placeholder-gray-400 bg-black border border-gray-200  md:h-48 dark:placeholder-gray-600 bg-black-900  dark:border-gray-700 focus:border-red-700 dark:focus:border-red-700 focus:ring-red-700 focus:outline-none focus:ring focus:ring-opacity-40"
                       placeholder="Message"
+                      required
                       name="message"
                     ></textarea>
                   </div>

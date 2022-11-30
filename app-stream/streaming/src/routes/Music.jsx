@@ -80,7 +80,7 @@ export default function Music() {
                 </li>
                 <li>
                   <Link to="/abouts" className="hover:bg-red-900">
-                    Parteners
+                  Partenaires
                   </Link>
                 </li>
               </ul>
@@ -132,7 +132,7 @@ export default function Music() {
               </li>
               <li>
                 <Link to="/abouts" className="hover:bg-red-900">
-                  Parteners
+                Partenaires
                 </Link>
               </li>
             </ul>
