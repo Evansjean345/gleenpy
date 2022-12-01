@@ -286,7 +286,7 @@ export default function ContactForm() {
                         <option value="arrangeur">arrangeur</option>
                         <option value="influenceur">influenceur</option>
                         <option value="artiste peintre">artiste peintre</option>
-                        <option value="religieux">artiste peintre</option>
+                        <option value="religieux">religieux</option>
                       </select>
                     </div>
                   </div>
