@@ -1,11 +1,9 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef} from "react";
 import emailjs from "@emailjs/browser";
 
 export default function ContactForm() {
   ///////////////////////////////
-  const [show1, setshow1] = useState(true);
-  const [show2, setshow2] = useState(false);
-  const [show3, setshow3] = useState(false);
+
   const form = useRef();
 
   const sendEmail = (e) => {
@@ -283,6 +281,12 @@ export default function ContactForm() {
                         <option value="entreprise">entreprise</option>
                         <option value="artiste">artiste</option>
                         <option value="particulier">particulier</option>
+                        <option value="producteur">producteur</option>
+                        <option value="realisateur">realisateur</option>
+                        <option value="arrangeur">arrangeur</option>
+                        <option value="influenceur">influenceur</option>
+                        <option value="artiste peintre">artiste peintre</option>
+                        <option value="religieux">artiste peintre</option>
                       </select>
                     </div>
                   </div>
