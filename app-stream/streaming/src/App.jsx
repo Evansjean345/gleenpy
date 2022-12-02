@@ -279,7 +279,7 @@ function App() {
   }, []);
 
   return loader ? (
-    <div className="p-0 m-0 flex items-center justify-center w-full h-[100vh] bg-contain bg-[url('https://images.unsplash.com/photo-1515657241610-a6b33f0f6c5a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1276&q=80')]">
+    <div className="p-0 m-0 flex items-center justify-center w-full h-[100vh] bg-black ">
       <Loader />
     </div>
   ) : (
