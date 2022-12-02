@@ -1,7 +1,8 @@
 import "./dist/output.css";
-import React from "react";
+import { React, useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import ScrollToTop from "./api/ScrollToTop";
+import Loader from "./Loader";
 /////////////////////////////////////////////
 import Home from "./routes/Home";
 import Music from "./routes/Music";
@@ -269,7 +270,19 @@ import Marcia from "./musicRagga/Marcia";
 import Tosh from "./musicRagga/Tosh";
 
 function App() {
-  return (
+  const [loader, setLoader] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoader(false);
+    }, 3000);
+  }, []);
+
+  return loader ? (
+    <div className="p-0 m-0 flex items-center justify-center w-full h-[100vh] bg-black">
+      <Loader />
+    </div>
+  ) : (
     <div className="App p-0 m-0 h-[100vh] bg-black">
       <ScrollToTop />
       <Routes>
@@ -516,11 +529,11 @@ function App() {
           <Route path="/musics/okit" element={<Okit />} />
           {/* Raggae */}
           <Route path="/musics/love" element={<Bob />} />
-          <Route path="/musics/blondy" element={<Blondy/>} />
-          <Route path="/musics/luciano" element={<Luciano/>} />
-          <Route path="/musics/buju" element={<Buju/>} />
-          <Route path="/musics/marcia" element={<Marcia/>} />
-          <Route path="/musics/tosh" element={<Tosh/>} />
+          <Route path="/musics/blondy" element={<Blondy />} />
+          <Route path="/musics/luciano" element={<Luciano />} />
+          <Route path="/musics/buju" element={<Buju />} />
+          <Route path="/musics/marcia" element={<Marcia />} />
+          <Route path="/musics/tosh" element={<Tosh />} />
         </Route>
         {/*Gag Home */}
         <Route path="/gagHome" element={<GagHome />} />
