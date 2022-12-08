@@ -164,7 +164,7 @@ export default function HomeMovies() {
         <br />
         <br />
         <br />
-        <div className="btn-group flex justify-center w-full sm:gap-x-20 gap-x-2 text-xs sm:text-base  bg-black">
+        <div className="btn-group flex justify-center w-full sm:gap-x-20 gap-x-2   bg-black">
           <div>
             <a
               href="https://www.netflix.com/ci/"
