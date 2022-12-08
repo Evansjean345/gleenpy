@@ -15,6 +15,8 @@ import SliderGospel from "../musicGospel/SliderGospel";
 import SliderRagga from "../musicRagga/SliderRaggae";
 import SliderAll from "../musicAllStars/SliderAll";
 import SliderHerbe from "../musicEnHerbe/SliderHerbe";
+import MusicHeroStars from "../layout/MuiscHeroStars";
+import MusicHeroGrass from "../layout/MusicHeroGrass";
 
 export default function MusicHome() {
   const [allstars, setAllstars] = useState(false);
@@ -98,7 +100,7 @@ export default function MusicHome() {
                 </li>
                 <li>
                   <Link to="/abouts" className="hover:bg-red-900">
-                  Partenaires
+                    Partenaires
                   </Link>
                 </li>
               </ul>
@@ -150,7 +152,7 @@ export default function MusicHome() {
               </li>
               <li>
                 <Link to="/abouts" className="hover:bg-red-900">
-                Partenaires
+                  Partenaires
                 </Link>
               </li>
             </ul>
@@ -166,31 +168,36 @@ export default function MusicHome() {
         <br />
         <br />
         <br />
-        <div className="btn-group grid grid-cols-2 gap-1 bg-black">
-          <button
-            onClick={() => {
-              setAllstars(!allstars);
-              setGrass(false);
-            }}
-            className="hover:bg-red-900 text-md lg:hover:text-lg rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
-          >
-            All Stars
-          </button>
-          <button
-            onClick={() => {
-              setGrass(!grass);
-              setAllstars(false);
-            }}
-            className="hover:bg-red-900 text-md lg:hover:text-lg rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
-          >
-            En Herbe
-          </button>
+        <div className="btn-group flex w-full justify-center  sm:gap-x-16 gap-x-2 text-xs sm:text-base bg-black">
+          <div className="w-[45%] flex justify-end ">
+            <button
+              onClick={() => {
+                setAllstars(!allstars);
+                setGrass(false);
+              }}
+              className="hover:bg-red-900 text-md lg:hover:text-lg rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
+            >
+              All STARS
+            </button>
+          </div>
+          <div className="w-[55%] ">
+            {" "}
+            <button
+              onClick={() => {
+                setGrass(!grass);
+                setAllstars(false);
+              }}
+              className="hover:bg-red-900 text-md lg:hover:text-lg rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
+            >
+              EN HERBE
+            </button>
+          </div>
         </div>
         <br />
-        <MusicHero />
         <div className="bg-black">
           {!allstars && !grass ? (
             <div>
+              <MusicHero />
               <SliderCoupe />
               <br />
               <SliderZouglou />
@@ -213,6 +220,7 @@ export default function MusicHome() {
             </div>
           ) : (
             <div className={grass ? "hidden" : ""}>
+              <MusicHeroStars />
               <SliderAll />
             </div>
           )}
@@ -220,6 +228,7 @@ export default function MusicHome() {
             <div></div>
           ) : (
             <div>
+              <MusicHeroGrass />
               <SliderHerbe />
             </div>
           )}

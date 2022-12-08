@@ -11,7 +11,7 @@ const carousel = [
     to: "/movies/nollywood/deux",
   },
   {
-    imgURL: "https://afrozitv.com/wp-content/uploads/2022/09/le-coeur-du-veritable-amour.jpg",
+    imgURL: "https://i.ytimg.com/vi/Ze5cxhcYUk0/maxresdefault.jpg",
     imageAlt: "",
     smallTitle: "Coeur du véritable amour",
     overview: "Coeur du véritable amour",

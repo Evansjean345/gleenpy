@@ -172,14 +172,6 @@ function SliderAll() {
         <article>
           <div className="bg-black">
             <div className="max-w-2xl mx-auto py-8 px-4 sm:py-24 sm:px-12 lg:max-w-7xl lg:px-8">
-              <p className="mt-2 text-xl leading-8 font-bold tracking-tight text-white sm:text-3xl">
-                Retrouvez les meilleurs
-                <br />
-                hits de vos stars préférés sur gleenpy
-              </p>
-              <br />
-              <br />
-              <br />
               <div className="grid grid-cols-2 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
                 {music.map((item) => (
                   <Link

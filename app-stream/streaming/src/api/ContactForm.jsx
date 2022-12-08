@@ -55,6 +55,9 @@ export default function ContactForm() {
             <a href="https://www.buridaci.com/web/" alt="">
               <div className="w-full h-[100px] sm:h-[185px] lg:hover:opacity-90  lg:hover:scale-110 transition-all focus:outline-none border focus:border-gray-800 border-transparent bg-black flex justify-center items-center flex-col text-center py-14 px-12 space-y-6  bg-[url('https://sodrac.ca/wp-content/uploads/2017/06/BURIDA-Cote-Divoire.jpg')] bg-cover bg-center  bg-no-repeat rounded-lg  "></div>
             </a>
+            <a href="" alt="">
+              <div className="w-full h-[100px] sm:h-[185px] lg:hover:opacity-90  lg:hover:scale-110 transition-all focus:outline-none border focus:border-gray-800 border-transparent bg-black flex justify-center items-center flex-col text-center py-14 px-12 space-y-6  bg-[url('/CSNlogo.jpg')] bg-cover bg-center  bg-no-repeat rounded-lg  "></div>
+            </a>
           </div>
         </div>
       </div>

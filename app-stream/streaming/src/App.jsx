@@ -279,7 +279,7 @@ function App() {
   }, []);
 
   return loader ? (
-    <div className="p-0 m-0 flex items-center justify-center w-full h-[100vh] bg-black ">
+    <div className="p-0 m-0 flex items-center justify-center w-full h-[100vh] bg-black cd">
       <Loader />
     </div>
   ) : (

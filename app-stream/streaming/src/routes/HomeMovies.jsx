@@ -16,7 +16,7 @@ import SliderPrime from "../prime/SliderPrime";
 export default function HomeMovies() {
   const prime = useRef(null);
   const nollywood = useRef(null);
-  const african = useRef(null);
+  const comedie = useRef(null);
 
   const scrollToSection = (elementRef) => {
     window.scrollTo({
@@ -99,7 +99,7 @@ export default function HomeMovies() {
                 </li>
                 <li>
                   <Link to="/abouts" className="hover:bg-red-900">
-                  Partenaires
+                    Partenaires
                   </Link>
                 </li>
               </ul>
@@ -148,7 +148,7 @@ export default function HomeMovies() {
               </li>
               <li>
                 <Link to="/abouts" className="hover:bg-red-900">
-                Partenaires
+                  Partenaires
                 </Link>
               </li>
             </ul>
@@ -164,37 +164,47 @@ export default function HomeMovies() {
         <br />
         <br />
         <br />
-        <div className="btn-group grid grid-cols-4 gap-1  bg-black">
-          <a
-            href="https://www.netflix.com/ci/"
-            className="flex items-center justify-center hover:bg-red-900 text-md lg:hover:text-lg rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
-          >
-            NETFLIX
-          </a>
-          <button
-            onClick={() => {
-              scrollToSection(prime);
-            }}
-            className="hover:bg-red-900 text-md lg:hover:text-lg rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
-          >
-            PRIME
-          </button>
-          <button
-            onClick={() => {
-              scrollToSection(nollywood);
-            }}
-            className="hover:bg-red-900 text-md lg:hover:text-lg rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
-          >
-            NOLLYWOOD
-          </button>
-          <button
-            onClick={() => {
-              scrollToSection(african);
-            }}
-            className="hover:bg-red-900 text-md lg:hover:text-lg rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
-          >
-            AFRICAIN
-          </button>
+        <div className="btn-group flex justify-center w-full sm:gap-x-20 gap-x-2 text-xs sm:text-base  bg-black">
+          <div>
+            <a
+              href="https://www.netflix.com/ci/"
+              className="flex items-center justify-center hover:bg-red-900 text-md lg:hover:text-lg rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
+            >
+              NETFLIX
+            </a>
+          </div>
+          <div>
+            <button
+              onClick={() => {
+                scrollToSection(prime);
+              }}
+              className="hover:bg-red-900 text-md lg:hover:text-lg rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
+            >
+              PRIME
+            </button>
+          </div>
+          <div>
+            {" "}
+            <button
+              onClick={() => {
+                scrollToSection(nollywood);
+              }}
+              className="hover:bg-red-900 text-md lg:hover:text-lg rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
+            >
+              NOLLYWOOD
+            </button>
+          </div>
+          <div>
+            {" "}
+            <button
+              onClick={() => {
+                scrollToSection(comedie);
+              }}
+              className="hover:bg-red-900 text-md lg:hover:text-lg rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
+            >
+              COMEDIE
+            </button>
+          </div>
         </div>
         <br />
         <div className="bg-black">
@@ -207,12 +217,12 @@ export default function HomeMovies() {
           </section>
           <br />
           <br />
-          <section ref={african}>
+          <section>
             <SliderAfrican />
           </section>
           <br />
           <br />
-          <section>
+          <section ref={comedie}>
             <SliderComedie />
           </section>
           <br />

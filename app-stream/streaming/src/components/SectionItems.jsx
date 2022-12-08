@@ -40,7 +40,7 @@ function SectionItems() {
       to: "/movies/anime/naruto",
       title: "Naruto Shippuden",
       imageSrc:
-        "https://animespider.com/wp-content/uploads/2021/03/Naruto-shippuden.png",
+        "https://static.posters.cz/image/1300/affiches-et-posters/naruto-shippuden-group-ninja-war-i97861.jpg",
       imageAlt: "Naruto Shippuden",
     },
     {
