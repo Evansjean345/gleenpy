@@ -168,7 +168,7 @@ export default function MusicHome() {
         <br />
         <br />
         <br />
-        <div className="btn-group flex w-full justify-center  sm:gap-x-16 gap-x-10 
+        <div className="btn-group flex w-full justify-center  sm:gap-x-16 gap-x-20
          bg-black">
           <div className="w-[45%] flex justify-end ">
             <button

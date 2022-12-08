@@ -15,17 +15,17 @@ export default function HeroHome() {
             <h1 className="text-xl">
               <b>
                 {" "}
-                Regarder vos films préférés sur gleenpy ,
-                ecouter les meilleurs sons de vos stars et developons la culture Africaine
+                Regardez vos films préférés sur gleenpy et ecoutez les meilleurs
+                sons de vos stars
               </b>
             </h1>
           </div>
           <div id="div-trailer-movies-two">
             <h1 className="text-3xl">
               <b>
-                Regarder vos films préférés sur gleenpy ,
+                Regardez vos films préférés sur gleenpy
                 <br />
-                ecouter les meilleurs sons de vos stars et developons la culture Africaine
+                et ecoutez les meilleurs sons de vos stars
               </b>
             </h1>
           </div>
