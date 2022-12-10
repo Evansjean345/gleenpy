@@ -22,27 +22,27 @@ export default function HeroHome() {
             id="trailer-text"
           >
             <div className="  sm:pt-40 pt-0  ">
-              <span className="font-bold text-3xl text-[#B91C1C] bg-white">
+              <span className="font-bold text-xl sm:text-3xl text-[#B91C1C] bg-white">
                 <Typewriter
                   words={["EXCLUSIVITE GLEENPY !"]}
                   loop={false}
                   cursor
                   cursorStyle="_"
-                  typeSpeed={70}
-                  deleteSpeed={50}
+                  typeSpeed={100}
+                  deleteSpeed={70}
                   delaySpeed={1000}
                 />
               </span>
               <br />
-              <span className="font-bold text-3xl text-[#B91C1C] bg-white">
+              <span className="font-bold text-xl sm:text-3xl text-[#B91C1C] bg-white">
                 <Typewriter
                   words={["PREMIER SINGLE DE JCK BOSS"]}
                   loop={false}
                   cursor
                   cursorStyle="_"
-                  typeSpeed={40}
-                  deleteSpeed={50}
-                  delaySpeed={1000}
+                  typeSpeed={140}
+                  deleteSpeed={70}
+                  delaySpeed={2000}
                 />
               </span>
             </div>
