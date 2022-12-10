@@ -1,36 +1,49 @@
 import React from "react";
 import "../index.css";
+import { Typewriter } from "react-simple-typewriter";
 
 export default function HeroHome() {
   return (
     <>
-      <div
-        className="hero h-[60vh] relative"
-        style={{
-          backgroundImage: `url("https://media2.giphy.com/media/952xA6J2uJxaqCaIt9/giphy.gif")`,
-        }}
-      >
-        <div className=" absolute bottom-0 flex flex-col z-40 bg-[rgba(0, 0, 0, 0.5)] text-white w-full p-12  pl-4 bg-gradient-to-t from-black to-[rgba(0, 0, 0, 0.667)]">
-          <div id="div-trailer-movies-one">
-            <h1 className="text-xl">
-              <b>
-                {" "}
-                Regardez vos films préférés sur gleenpy et ecoutez les meilleurs
-                sons de vos stars
-              </b>
-            </h1>
-          </div>
-          <div id="div-trailer-movies-two">
-            <h1 className="text-3xl">
-              <b>
-                Regardez vos films préférés sur gleenpy
-                <br />
-                et ecoutez les meilleurs sons de vos stars
-              </b>
-            </h1>
+      <header>
+        <div className="relative h-full  w-full" id="video-container">
+          <video
+            id="video-trailer"
+            className="object-cover sm:h-[510px] w-full"
+            autoPlay
+            muted
+            loop
+          >
+            <source src="announce/jck.mp4" type="video/mp4" />
+          </video>
+          <div
+            className=" absolute  sm:pt-32 pt-64 sm:top-12 top-0 bottom-0 flex flex-col z-40 bg-[rgba(0, 0, 0, 0.5)] text-white w-full p-20 bg-gradient-to-t from-black to-[rgba(0, 0, 0, 0.667)]"
+            id="trailer-text"
+          >
+            <div className="  sm:pt-40 pt-16 sm:text-3xl text-xl font-semibold sm:font-bold">
+              <Typewriter
+                words={["EXCLUSIVITE SUR GLEENPY !"]}
+                loop={false}
+                cursor
+                cursorStyle="_"
+                typeSpeed={70}
+                deleteSpeed={50}
+                delaySpeed={1000}
+              />
+              <br />
+              <Typewriter
+                words={[" SORTIE DU TOUT PREMIER SINGLE DE JCK BOSS"]}
+                loop={false}
+                cursor
+                cursorStyle="_"
+                typeSpeed={70}
+                deleteSpeed={50}
+                delaySpeed={1000}
+              />
+            </div>
           </div>
         </div>
-      </div>
+      </header>
     </>
   );
 }
