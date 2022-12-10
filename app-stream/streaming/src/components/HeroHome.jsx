@@ -15,9 +15,10 @@ export default function HeroHome() {
           <video
             id="video-trailer"
             className="object-cover sm:h-[510px] w-full"
-            autoPlay={true}
-            muted={true}
-            loop={true}
+            autoPlay
+            muted
+            loop
+            playsInline
           >
             <source src="/jck.mp4" type="video/mp4" />
           </video>
