@@ -18,7 +18,7 @@ export default function HeroHome() {
             <source src="/jck.mp4" type="video/mp4" />
           </video>
           <div
-            className=" absolute  sm:pt-32 pt-48 sm:top-12 top-0 bottom-0 flex flex-col z-40 bg-[rgba(0, 0, 0, 0.5)] text-white w-full p-20 bg-gradient-to-t from-black to-[rgba(0, 0, 0, 0.667)]"
+            className=" absolute  sm:pt-32 pt-64 sm:top-12 top-0 bottom-0 flex flex-col z-40 bg-[rgba(0, 0, 0, 0.5)] text-white w-full p-20 bg-gradient-to-t from-black to-[rgba(0, 0, 0, 0.667)]"
             id="trailer-text"
           >
             <div className="  sm:pt-40 pt-0  ">
