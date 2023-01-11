@@ -4,6 +4,15 @@ import { Link } from "react-router-dom";
 const carousel = [
     {
         id: "2",
+        title: "JCK Boss",
+        to: "/musics/jck",
+        artist: "Cherie Coco",
+        imageSrc:
+          "/jck.jpg",
+        imageAlt: "",
+      },
+    {
+        id: "2",
         title: "En haut",
         to: "/musics/haut",
         artist: "didi B X Jr Low",

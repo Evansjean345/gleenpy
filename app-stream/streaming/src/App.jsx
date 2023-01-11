@@ -268,6 +268,7 @@ import Luciano from "./musicRagga/Luciano";
 import Buju from "./musicRagga/Buju";
 import Marcia from "./musicRagga/Marcia";
 import Tosh from "./musicRagga/Tosh";
+import JCK from "./musicIvoire/Jck";
 
 function App() {
   const [loader, setLoader] = useState(true);
@@ -512,6 +513,7 @@ function App() {
           <Route path="/musics/coco" element={<Coco />} />
           <Route path="/musics/suspect" element={<Suspect />} />
           <Route path="/musics/fior" element={<Fior />} />
+          <Route path="/musics/jck" element={<JCK />} />
           {/* Rumba */}
           <Route path="/musics/fally" element={<Fally />} />
           <Route path="/musics/femme" element={<Koffi />} />
