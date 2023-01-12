@@ -13,22 +13,8 @@ const ObjTrailer = {
 };
 
 const SecondObj = {
-  title: "Lyrics",
-  text: `C'est le Eanie Meanie, Saint Thomas, Puff
-  Georges Fine A.K.A, A.K.A, hein
-  Marie Pierre, je t'appelle, tu décroches pas
-  Je t'écris, tu me fais vu, écoute bien ce que j'ai à te dire
-  Morte subite est en train de rendre tous mes parents skinny
-  Pendant ce temps mon argent te fait grossir
-  Tu as fini tout mon pya sans même me donner un coup
-  Tu sais pas que je suis orphelin? On est ensemble, tu te snappes toi seule
-  Comme quand les gens là tapent poto au Palais de la culture
-  Au resto tu prends pizza sur place, manaïche à emporter
-  Je prends eau de robinet avec glaçon, je payais une robe à 100 000 pour toi
-  Alors que j'avais toujours mon même tee-shirt de Variétoscope
-  Je viens en bas de ton immeuble avec cadeau de Saint-valentin
-  Tu me dis de laisser ça au gardien, tu as des céphalées
-  Marie Pierre fallait au moins me faire MP comme tes initiales`,
+  title: "",
+  text: ``,
 };
 
 export default function JCK() {
