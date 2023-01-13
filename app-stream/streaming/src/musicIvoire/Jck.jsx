@@ -5,11 +5,10 @@ import Footer from "../layout/Footer";
 import { Dialog, DialogBody, DialogFooter } from "@material-tailwind/react";
 
 const ObjTrailer = {
-  videoTrailer:
-   "/jck.jpg",
+  videoTrailer: "/jck.mp4",
   title: "JCK Boss",
   text: "Cherie COCO",
-  videoModal:"https://www.youtube-nocookie.com/embed/lmY8B6twUOs"
+  videoModal: "https://www.youtube-nocookie.com/embed/lmY8B6twUOs",
 };
 
 const SecondObj = {
@@ -26,9 +25,12 @@ export default function JCK() {
         {/*Video Trailer Start */}
         <header>
           <div className="relative h-full  w-full" id="video-container">
-            <img
+            <video
+              muted
+              playsInline
+              loop
+              autoPlay
               id="video-trailer"
-              alt=""
               src={ObjTrailer.videoTrailer}
               className="object-cover sm:h-[550px] w-full"
             />
@@ -118,13 +120,11 @@ export default function JCK() {
                 <div className="-my-8 divide-y-2 divide-gray-100">
                   <div className="py-8 flex flex-wrap md:flex-nowrap">
                     <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
-                      <div className="w-20 h-20 relative ml-6">
-                    
-                      </div>
+                      <div className="w-20 h-20 relative ml-6"></div>
                     </div>
                     <div className="md:flex-grow">
-                    <h2 className="text-3xl font-bold text-red-700 title-font mb-2">
-                    Gleenpy
+                      <h2 className="text-3xl font-bold text-red-700 title-font mb-2">
+                        Gleenpy
                       </h2>
                       {/*
                     <p class="leading-relaxed">
@@ -159,4 +159,3 @@ export default function JCK() {
     </div>
   );
 }
-
