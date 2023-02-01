@@ -19,7 +19,7 @@ const carousel = [
     to: "/movies/comedie/bienvenue",
   },
   {
-    imgURL: "https://www.philippedebroca.fr/wp-content/uploads/2014/04/africain001.jpg",
+    imgURL: "https://images-2.wuaki.tv/system/shots/190515/original/snapshot-1590661306.jpeg",
     smallTitle: "L'Africain",
     imageAlt: "",
     overview: "L'Africain",
