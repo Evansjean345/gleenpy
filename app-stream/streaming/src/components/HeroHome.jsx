@@ -22,9 +22,9 @@ export default function HeroHome() {
             id="trailer-text"
           >
             <div className="  sm:pt-40 pt-0  ">
-              <span className="font-bold text-xl sm:text-3xl text-[#B91C1C] bg-white">
+              <span className="font-bold text-xl sm:text-3xl text-[#B91C1C] ">
                 <Typewriter
-                  words={["GLEENPY VOUS SOUHAITE!"]}
+                  words={["NEXTDEO VOUS SOUHAITE!"]}
                   loop={false}
                   cursor
                   cursorStyle="_"
@@ -34,7 +34,7 @@ export default function HeroHome() {
                 />
               </span>
               <br />
-              <span className="font-bold text-xl sm:text-3xl text-[#B91C1C] bg-white">
+              <span className="font-bold text-xl sm:text-3xl text-[#B91C1C]">
                 <Typewriter
                   words={["UNE JOYEUSE JOURNEE INTERNATIONALE DE LA FEMME"]}
                   loop={false}

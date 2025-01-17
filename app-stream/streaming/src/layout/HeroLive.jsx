@@ -14,20 +14,20 @@ export default function HeroLive() {
           <div id="div-trailer-movies-one">
             <h1 className="sm:text-3xl text-xl">
               <b>
-                Retrouvez vos
+                Achetez les ouevres
                 <br />
-                influenceurs et
+                de vos artistes
                 <br />
-                influenceuses ici
+                préférés ici
               </b>
             </h1>
           </div>
           <div id="div-trailer-movies-two">
             <h1 className="sm:text-3xl text-xl">
               <b>
-                Retrouvez vos
+                Achetez les ouvres
                 <br />
-                influenceurs et influenceuses ici
+                de vos artirtes préférés ici
               </b>
             </h1>
           </div>
