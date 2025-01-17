@@ -65,7 +65,7 @@ export default function GagHome() {
               </li>
               <li>
                 <Link to="/directHome" className="hover:bg-red-900">
-                  partagez le direct
+                Achat des oeuvres
                 </Link>
               </li>
               <li>
@@ -114,7 +114,7 @@ export default function GagHome() {
             </li>
             <li>
               <Link to="/directHome" className="hover:bg-red-900">
-                partagez le direct
+              Achat des oeuvres
               </Link>
             </li>
             <li>
@@ -137,7 +137,7 @@ export default function GagHome() {
         {/*Nav PC version End */}
         <div id="logo" className="navbar-end">
           <Link to="" className=" bg-black text-red-700 text-2xl font-bold ">
-          Gleenpy
+          NEXTDEO
           </Link>
         </div>
       </NavLink>

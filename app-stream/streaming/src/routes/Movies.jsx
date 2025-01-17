@@ -2,13 +2,10 @@ import React from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import "../index.css";
 
-
-
-
 export default function Movies() {
   return (
     <div className="bg-black m-0 p-0 h-[100vh] w-full">
-     <NavLink
+      <NavLink
         className="navbar bg-black fixed z-50
 "
       >
@@ -65,7 +62,7 @@ export default function Movies() {
               </li>
               <li>
                 <Link to="/directHome" className="hover:bg-red-900">
-                  partagez le direct 
+                Achat des oeuvres
                 </Link>
               </li>
               <li>
@@ -80,7 +77,7 @@ export default function Movies() {
               </li>
               <li>
                 <Link to="/abouts" className="hover:bg-red-900">
-                Partenaires
+                  Partenaires
                 </Link>
               </li>
             </ul>
@@ -114,7 +111,7 @@ export default function Movies() {
             </li>
             <li>
               <Link to="/directHome" className="hover:bg-red-900">
-                partagez le direct
+              Achat des oeuvres
               </Link>
             </li>
             <li>
@@ -129,7 +126,7 @@ export default function Movies() {
             </li>
             <li>
               <Link to="/abouts" className="hover:bg-red-900">
-              Partenaires
+                Partenaires
               </Link>
             </li>
           </ul>
@@ -137,7 +134,7 @@ export default function Movies() {
         {/*Nav PC version End */}
         <div id="logo" className="navbar-end">
           <Link to="" className=" bg-black text-red-700 text-2xl font-bold ">
-          Gleenpy
+            NEXTDEO
           </Link>
         </div>
       </NavLink>
@@ -145,5 +142,3 @@ export default function Movies() {
     </div>
   );
 }
-
- 

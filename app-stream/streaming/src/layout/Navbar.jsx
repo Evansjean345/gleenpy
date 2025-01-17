@@ -62,7 +62,7 @@ function Navbar() {
               </li>
               <li>
                 <Link to="/directHome" className="hover:bg-red-900">
-                  partagez le direct 
+                  Achat des oeuvres
                 </Link>
               </li>
               <li>
@@ -77,7 +77,7 @@ function Navbar() {
               </li>
               <li>
                 <Link to="/abouts" className="hover:bg-red-900">
-                Partenaires
+                  Partenaires
                 </Link>
               </li>
             </ul>
@@ -111,7 +111,7 @@ function Navbar() {
             </li>
             <li>
               <Link to="/directHome" className="hover:bg-red-900">
-                partagez le direct
+                Achat des oeuvres
               </Link>
             </li>
             <li>
@@ -126,7 +126,7 @@ function Navbar() {
             </li>
             <li>
               <Link to="/abouts" className="hover:bg-red-900">
-              Partenaires
+                Partenaires
               </Link>
             </li>
           </ul>
@@ -134,7 +134,7 @@ function Navbar() {
         {/*Nav PC version End */}
         <div id="logo" className="navbar-end">
           <Link to="" className=" bg-black text-red-700 text-2xl font-bold ">
-          Gleenpy
+            NEXTDEO
           </Link>
         </div>
       </NavLink>
