@@ -1,62 +1,33 @@
-import React from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 
-const carousel = [
-    {
-        id: "25",
-        title: "Envolver",
-        to: "/musics/anitta",
-        artist: "Anitta",
-        imageSrc:
-          "https://static01.nyt.com/images/2022/04/10/arts/10anitta1/10anitta1-videoSixteenByNine3000-v2.jpg",
-        imageAlt: "",
-      },
-      {
-        id: "15",
-        title: "Skoin Skoin",
-        to: "/musics/bianca",
-        artist: "Ckay X Bianca Costa",
-        imageSrc:
-          "https://www.melolive.fr/wp-content/uploads/2021/07/bianca-costa-09072021-milyclic-9.jpg",
-        imageAlt: "skoin skoin",
-      },
-      {
-        id: "30",
-        title: "Obsessed with you",
-        to: "/musics/obsessed",
-        artist: "Central Cee",
-        imageSrc:
-          "https://images.sk-static.com/images/media/profile_images/artists/10154650/huge_avatar",
-        imageAlt: "",
-      },
-      {
-        id: "13",
-        title: "Picture in my mind",
-        to: "/musics/picture",
-        artist: "PinkPantheress",
-        imageSrc: "https://i.ytimg.com/vi/SIHS1lLzqOo/maxresdefault.jpg",
-        imageAlt: "picture in my mind",
-      },
-      {
-        id: "7",
-        title: "Saoko",
-        to: "/musics/rosalia",
-        artist: "Rosalià",
-        imageSrc:
-          "https://www.objetivoreggaeton.com/wp-content/uploads/2022/02/motomami-es-el-album-de-rosalia.jpg",
-        imageAlt: "Rosalià",
-      },
-      {
-        id: "7",
-        title: "Coffee",
-        to: "/musics/coffee",
-        artist: "Beabadoobee",
-        imageSrc:
-          "https://media.npr.org/assets/img/2020/03/01/beabadoobee---jordan-curtis-hughes2-8eb56be1a64ebccc6b704fa65166f7a38989394d.jpeg",
-        imageAlt: "",
-      },
-];
 export default function SliderPop() {
+  const [artist, setArtist] = useState([]);
+  const API_URL = `${process.env.REACT_APP_API_URL}/artists`;
+
+  // Fonction pour mélanger les films aléatoirement
+  const shuffleArray = (array) => {
+    return array.sort(() => Math.random() - 0.5);
+  };
+
+  useEffect(() => {
+    const fetchSeries = async () => {
+      try {
+        const response = await axios.get(API_URL);
+        const artistsPop = response.data.filter(
+          (item) => item.type === "Pop-music"
+        );
+        const shuffledSeries = shuffleArray(artistsPop); // Mélanger les films
+        setArtist(shuffledSeries);
+      } catch (error) {
+        console.error("Erreur lors du chargement des series :", error);
+      }
+    };
+
+    fetchSeries();
+  }, [API_URL]);
+
   return (
     <>
       <div className="bg-black sm:pr-20 sm:pl-20">
@@ -66,21 +37,21 @@ export default function SliderPop() {
           <br />
         </p>
         <div className="carousel carousel-end rounded-box cursor-pointer sm:p-6 ">
-          {carousel.map((items) => {
+          {artist.map((items) => {
             return (
               <div className="carousel-item  pl-2 pr-6 group rounded-xl relative">
-                <Link to={items.to}>
+                <Link to={`/songs/${items._id}/details`}>
                   <img
-                    src={items.imageSrc}
-                    alt={items.imageAlt}
+                    src={items.banner}
+                    alt={``}
                     className="rounded-full h-[220px] w-[260px]  sm:transform sm:transition-all sm:group-hover:scale-90"
                   />
                   <div className="absolute pl-6 m-6 bottom-0 z-30 sm:group-hover:scale-90 ">
                     <h1 className="w-64 text-lg font-semibold leading-8 mt-2 text-white">
-                      {items.artist}
+                      {items.name}
                     </h1>
                     <p className="mt-4 text-base font-medium cursor-pointer leading-4 underline text-white">
-                      {items.title}
+                      {items.network}
                     </p>
                   </div>
                 </Link>

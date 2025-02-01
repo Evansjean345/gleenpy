@@ -1,18 +1,20 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "../index.css";
 
 function Navbar() {
   return (
     <>
-      <NavLink
-        className="navbar bg-black fixed z-50
-"
-      >
-        {/*Nav mobile version Start */}
+      <nav className="navbar bg-black fixed z-50">
+        <div id="logo" className="navbar-end">
+          <NavLink to="/" className="bg-black text-red-700 text-2xl font-bold">
+            <img src="/logo.png" alt="logo" className="h-[64px] w-32" />
+          </NavLink>
+        </div>
+        {/* Nav mobile version Start */}
         <div className="navbar-start">
           <div className="dropdown">
-            {/*burger icon start */}
+            {/* Burger icon start */}
             <label
               tabIndex={0}
               className="btn text-white btn-ghost xl:hidden bg-red-700"
@@ -32,112 +34,205 @@ function Navbar() {
                 />
               </svg>
             </label>
-            {/*burger icon end*/}
+            {/* Burger icon end */}
             <ul
               tabIndex={0}
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-black text-white rounded-box w-52"
             >
               <li>
-                <Link to="/" className="hover:bg-red-900 bg-red-700">
-                  Accueil
-                </Link>
-              </li>
-              <li tabIndex={0}>
-                <Link
-                  to="/moviesHome"
-                  className="justify-between hover:bg-red-900"
+                <NavLink
+                  to="/"
+                  end
+                  className={({ isActive }) =>
+                    isActive ? "bg-red-700" : "hover:bg-red-900"
+                  }
                 >
-                  cinéma
-                </Link>
+                  Accueil
+                </NavLink>
               </li>
               <li>
-                <Link to="/musicsHome" className="hover:bg-red-900">
-                  musique
-                </Link>
+                <NavLink
+                  to="/moviesHome"
+                  end
+                  className={({ isActive }) =>
+                    isActive ? "bg-red-700" : "hover:bg-red-900"
+                  }
+                >
+                  Cinéma
+                </NavLink>
               </li>
               <li>
-                <Link to="/gagHome" className="hover:bg-red-900">
-                  gag
-                </Link>
+                <NavLink
+                  to="/musicsHome"
+                  end
+                  className={({ isActive }) =>
+                    isActive ? "bg-red-700" : "hover:bg-red-900"
+                  }
+                >
+                  Musique
+                </NavLink>
               </li>
               <li>
-                <Link to="/directHome" className="hover:bg-red-900">
-                  Achat des oeuvres
-                </Link>
+                <NavLink
+                  to="/gagHome"
+                  end
+                  className={({ isActive }) =>
+                    isActive ? "bg-red-700" : "hover:bg-red-900"
+                  }
+                >
+                  Gag
+                </NavLink>
               </li>
               <li>
-                <Link to="/tvHome" className="hover:bg-red-900">
-                  mes émissions TV
-                </Link>
+                <NavLink
+                  to="/directHome"
+                  end
+                  className={({ isActive }) =>
+                    isActive ? "bg-red-700" : "hover:bg-red-900"
+                  }
+                >
+                  Achat des œuvres
+                </NavLink>
               </li>
               <li>
-                <Link to="/lyricsHome" className="hover:bg-red-900">
-                  paroles de vie
-                </Link>
+                <NavLink
+                  to="/tvHome"
+                  end
+                  className={({ isActive }) =>
+                    isActive ? "bg-red-700" : "hover:bg-red-900"
+                  }
+                >
+                  Mes émissions TV
+                </NavLink>
               </li>
               <li>
-                <Link to="/abouts" className="hover:bg-red-900">
+                <NavLink
+                  to="/lyricsHome"
+                  end
+                  className={({ isActive }) =>
+                    isActive ? "bg-red-700" : "hover:bg-red-900"
+                  }
+                >
+                  Paroles de vie
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/abouts"
+                  end
+                  className={({ isActive }) =>
+                    isActive ? "bg-red-700" : "hover:bg-red-900"
+                  }
+                >
                   Partenaires
-                </Link>
+                </NavLink>
+              </li>
+              <li>
+                  <div className="hover:bg-red-900 text-start">se connecter</div>
+
               </li>
             </ul>
           </div>
         </div>
-
-        {/*Nav mobile version End */}
-
-        {/*Nav PC version Start */}
-        <div id="nav" className="navbar-center hidden lg:flex">
+        {/* Nav mobile version End */}
+        {/* Nav PC version Start */}
+        <div id="nav" className="navbar-center hidden  lg:flex w-[79%]">
           <ul className="menu menu-horizontal p-0 text-white">
             <li>
-              <Link to="/" className="hover:bg-red-900 bg-red-700">
+              <NavLink
+                to="/"
+                end
+                className={({ isActive }) =>
+                  isActive ? "bg-red-700" : "hover:bg-red-900"
+                }
+              >
                 Accueil
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/moviesHome" className="hover:bg-red-900">
-                cinéma
-              </Link>
-              <li className=" bg-black">
-                <Link to="/musicsHome" className="hover:bg-red-900">
-                  musique
-                </Link>
-              </li>
+              <NavLink
+                to="/moviesHome"
+                end
+                className={({ isActive }) =>
+                  isActive ? "bg-red-700" : "hover:bg-red-900"
+                }
+              >
+                Cinéma
+              </NavLink>
             </li>
             <li>
-              <Link to="/gagHome" className="hover:bg-red-900">
-                gag
-              </Link>
+              <NavLink
+                to="/musicsHome"
+                end
+                className={({ isActive }) =>
+                  isActive ? "bg-red-700" : "hover:bg-red-900"
+                }
+              >
+                Musique
+              </NavLink>
             </li>
             <li>
-              <Link to="/directHome" className="hover:bg-red-900">
-                Achat des oeuvres
-              </Link>
+              <NavLink
+                to="/gagHome"
+                end
+                className={({ isActive }) =>
+                  isActive ? "bg-red-700" : "hover:bg-red-900"
+                }
+              >
+                Gag
+              </NavLink>
             </li>
             <li>
-              <Link to="/tvHome" className="hover:bg-red-900">
-                mes Emissions TV
-              </Link>
+              <NavLink
+                to="/directHome"
+                end
+                className={({ isActive }) =>
+                  isActive ? "bg-red-700" : "hover:bg-red-900"
+                }
+              >
+                Achat des œuvres
+              </NavLink>
             </li>
             <li>
-              <Link to="/lyricsHome" className="hover:bg-red-900">
+              <NavLink
+                to="/tvHome"
+                end
+                className={({ isActive }) =>
+                  isActive ? "bg-red-700" : "hover:bg-red-900"
+                }
+              >
+                Mes émissions TV
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/lyricsHome"
+                end
+                className={({ isActive }) =>
+                  isActive ? "bg-red-700" : "hover:bg-red-900"
+                }
+              >
                 Paroles de vie
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/abouts" className="hover:bg-red-900">
+              <NavLink
+                to="/abouts"
+                end
+                className={({ isActive }) =>
+                  isActive ? "bg-red-700" : "hover:bg-red-900"
+                }
+              >
                 Partenaires
-              </Link>
+              </NavLink>
+            </li>
+            <li>
+              <div className="hover:bg-red-900">se connecter</div>
             </li>
           </ul>
         </div>
-        {/*Nav PC version End */}
-        <div id="logo" className="navbar-end">
-          <Link to="" className=" bg-black text-red-700 text-2xl font-bold ">
-            NEXTDEO
-          </Link>
-        </div>
-      </NavLink>
+        {/* Nav PC version End */}
+      </nav>
     </>
   );
 }

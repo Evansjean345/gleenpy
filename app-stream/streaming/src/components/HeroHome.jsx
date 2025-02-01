@@ -15,7 +15,7 @@ export default function HeroHome() {
             loop
             playsInline
           >
-            <source src="/WomenDay.mp4" type="video/mp4" />
+            <source src="/vide.mp4" type="video/mp4" />
           </video>
           <div
             className=" absolute  sm:pt-32 pt-64 sm:top-12 top-0 bottom-0 flex flex-col z-40 bg-[rgba(0, 0, 0, 0.5)] text-white w-full p-20 bg-gradient-to-t from-black to-[rgba(0, 0, 0, 0.667)]"
@@ -24,7 +24,7 @@ export default function HeroHome() {
             <div className="  sm:pt-40 pt-0  ">
               <span className="font-bold text-xl sm:text-3xl text-[#B91C1C] ">
                 <Typewriter
-                  words={["NEXTDEO VOUS SOUHAITE!"]}
+                  words={["BIENVENUE SUR NEXTDEO"]}
                   loop={false}
                   cursor
                   cursorStyle="_"
@@ -36,7 +36,7 @@ export default function HeroHome() {
               <br />
               <span className="font-bold text-xl sm:text-3xl text-[#B91C1C]">
                 <Typewriter
-                  words={["UNE JOYEUSE JOURNEE INTERNATIONALE DE LA FEMME"]}
+                  words={["LA PLATEFORME DE STREAMING AFRICAINE"]}
                   loop={false}
                   cursor
                   cursorStyle="_"

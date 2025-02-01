@@ -1,4 +1,4 @@
-import React, { useRef} from "react";
+import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
 
 export default function ContactForm() {
@@ -40,22 +40,22 @@ export default function ContactForm() {
             </h1>
           </div>
           <div className=" grid grid-cols-2 sm:grid-cols-2 w-full lg:grid-cols-3  justify-items-around gap-x-6 gap-y-6 xl:gap-x-8 mt-16 border-b-2 border-white pb-10 border-t-2 pt-10 xl:p-10">
-            <a href="https://www.nollywoodtv.fr/" alt="">
+            <a href="https://www.nollywoodtv.fr/" target="_blank" alt="">
               <div className="w-full h-[100px] sm:h-[185px] lg:hover:opacity-90 lg:hover:scale-110 transition-all focus:outline-none border focus:border-gray-800 border-transparent bg-gray-50 flex justify-center items-center flex-col text-center py-14 px-12 space-y-6  bg-[url('https://www.nollywoodtv.fr/wp-content/uploads/2020/12/Nollywood_TV_Logo_Colour.png')] bg-cover bg-center bg-contain bg-no-repeat rounded-lg  "></div>
             </a>
-            <a href="https://fespaco.org/" alt="">
+            <a href="https://fespaco.org/" target="_blank" alt="">
               <div className="w-full h-[100px] sm:h-[185px] lg:hover:opacity-90 lg:hover:scale-110 transition-all focus:outline-none border focus:border-gray-800 border-transparent bg-gray-50 flex justify-center items-center flex-col text-center py-14 px-12 space-y-6 bg-[url('https://presse.tv5monde.com/wp-content/uploads/2017/02/616925.jpg')] bg-cover bg-center bg-contain rounded-lg "></div>
             </a>
-            <a href="https://www.sacem.fr/" alt="">
+            <a href="https://www.sacem.fr/" target="_blank" alt="">
               <div className="w-full h-[100px] sm:h-[185px] lg:hover:opacity-90  lg:hover:scale-110 transition-all focus:outline-none border focus:border-gray-800 border-transparent bg-black flex justify-center items-center flex-col text-center py-14 px-12 space-y-6  bg-[url('https://upload.wikimedia.org/wikipedia/fr/thumb/9/9b/Logo_Sacem_-_2020.svg/1200px-Logo_Sacem_-_2020.svg.png')] bg-cover bg-center bg-contain bg-no-repeat rounded-lg  "></div>
             </a>
-            <a href="http://gaouproductions.com/" alt="">
+            <a href="http://gaouproductions.com/" target="_blank" alt="">
               <div className="w-full h-[100px] sm:h-[185px] lg:hover:opacity-90  lg:hover:scale-110 transition-all focus:outline-none border focus:border-gray-800 border-transparent bg-black flex justify-center items-center flex-col text-center py-14 px-12 space-y-6  bg-[url('https://www.musicinafrica.net/sites/default/files/images/music_professional_profile/201602/gaou-prod.jpg')] bg-cover bg-center bg-no-repeat rounded-lg  "></div>
             </a>
-            <a href="https://www.buridaci.com/web/" alt="">
+            <a href="https://www.buridaci.com/web/" target="_blank" alt="">
               <div className="w-full h-[100px] sm:h-[185px] lg:hover:opacity-90  lg:hover:scale-110 transition-all focus:outline-none border focus:border-gray-800 border-transparent bg-black flex justify-center items-center flex-col text-center py-14 px-12 space-y-6  bg-[url('https://sodrac.ca/wp-content/uploads/2017/06/BURIDA-Cote-Divoire.jpg')] bg-cover bg-center  bg-no-repeat rounded-lg  "></div>
             </a>
-            <a href="" alt="">
+            <a href="" alt="" target="_blank">
               <div className="w-full h-[100px] sm:h-[185px] lg:hover:opacity-90  lg:hover:scale-110 transition-all focus:outline-none border focus:border-gray-800 border-transparent bg-black flex justify-center items-center flex-col text-center py-14 px-12 space-y-6  bg-[url('/CSNlogo.jpg')] bg-cover bg-center  bg-no-repeat rounded-lg  "></div>
             </a>
           </div>

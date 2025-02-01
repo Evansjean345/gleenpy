@@ -1,6 +1,9 @@
-import React from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
-
+{
+  /*
+  
 const carousel = [
   {
     textUnderline: "1 Tome",
@@ -104,8 +107,34 @@ const carousel = [
     textUnderline: "1 Tome",
     to: "/movies/allEyezOnMe",
   },
-];
+]; */
+}
 export default function SliderPrime() {
+  const [moovies, setMoovies] = useState([]);
+  const API_URL = `${process.env.REACT_APP_API_URL}/moovies`;
+
+  // Fonction pour mélanger les films aléatoirement
+  const shuffleArray = (array) => {
+    return array.sort(() => Math.random() - 0.5);
+  };
+
+  useEffect(() => {
+    const fetchMoovies = async () => {
+      try {
+        const response = await axios.get(API_URL);
+        const primeMoovies = response.data.filter(
+          (moovie) => moovie.type === "primeVideo"
+        );
+        const shuffledMoovies = shuffleArray(primeMoovies); // Mélanger les films
+        setMoovies(shuffledMoovies);
+      } catch (error) {
+        console.error("Erreur lors du chargement des films :", error);
+      }
+    };
+
+    fetchMoovies();
+  }, [API_URL]);
+
   return (
     <>
       <div className="bg-black sm:pr-20 sm:pl-20">
@@ -115,24 +144,27 @@ export default function SliderPrime() {
           <br />
         </p>
         <div className="carousel carousel-end rounded-box cursor-pointer sm:p-6 ">
-          {carousel.map((items) => {
+          {moovies.map((items) => {
             return (
-              <div className="carousel-item  pl-2 pr-6 rounded-xl relative">
-                <Link to={items.to}>
+              <div
+                key={items?._id}
+                className="carousel-item  pl-2 pr-6 rounded-xl relative"
+              >
+                <Link to={`/mooviesHome/${items?._id}`}>
                   <img
-                    src={items.imgURL}
-                    alt={items.imageAlt}
+                    src={items?.banner}
+                    alt={``}
                     className="rounded-xl h-[300px] w-[340px] sm:transform sm:transition-all sm:hover:scale-90"
                   />
                   <div className="absolute m-6 bottom-0 z-30">
                     <p className="text-sm leading-none text-white">
-                      {items.smallTitle}
+                      {items?.rating}/10
                     </p>
                     <h1 className="w-64 text-2xl font-semibold leading-8 mt-2 text-white">
-                      {items.overview}
+                      {items?.title}
                     </h1>
                     <p className="mt-4 text-base font-medium cursor-pointer leading-4 underline text-white">
-                      {items.textUnderline}
+                      {items?.network}
                     </p>
                   </div>
                 </Link>

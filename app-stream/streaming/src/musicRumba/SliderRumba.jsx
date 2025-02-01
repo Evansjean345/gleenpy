@@ -1,62 +1,34 @@
-import React from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 
-const carousel = [
-  {
-    id: "25",
-    title: "Se Yo",
-    to: "/musics/fally",
-    artist: "fally Ipupa",
-    imageSrc:
-      "https://www.trendyhiphop.com/wp-content/uploads/2022/10/Fally-Ipupa-Se-Yo-MP3.webp",
-    imageAlt: "",
-  },
-  {
-    id: "15",
-    title: "Femme",
-    to: "/musics/femme",
-    artist: "Koffi Olomide",
-    imageSrc:
-      "        https://ichef.bbci.co.uk/news/640/cpsprodpb/15F0A/production/_113566898_koffio.png",
-    imageAlt: "",
-  },
-  {
-    id: "30",
-    title: "Marathon",
-    to: "/musics/fere",
-    artist: "Fere Gola",
-    imageSrc:
-      "https://yt3.ggpht.com/WddLNkyEBLYMb4swN4CNQnLPWX9iOs3kSCjpGoNfbQezUrsBC5cO9vijN1qLg0JMPHgVwmKZtA=s900-c-k-c0x00ffffff-no-rj",
-    imageAlt: "",
-  },
-  {
-    id: "13",
-    title: "Proteger Base",
-    to: "/musics/werrason",
-    artist: "Werrason",
-    imageSrc: "https://allo-kinculture.com/wp-content/uploads/2022/01/20220124_154618.jpg",
-    imageAlt: "",
-  },
-  {
-    id: "7",
-    title: "Université",
-    to: "/musics/cindy",
-    artist: "Cindy le Coeur",
-    imageSrc:
-    "https://i0.wp.com/mbote.cd/app/uploads/2020/12/images-3.jpeg?fit=739%2C415&ssl=1",
-    imageAlt: "",
-  },
-  {
-    id: "7",
-    title: "Pardonne-moi",
-    to: "/musics/sorry",
-    artist: "Ninita X Mbilia Bel",
-    imageSrc:
-      "https://5000hits.com/files/images/covers/2019/04/329esykQ.jpg",
-    imageAlt: "",
-  },
-];
 export default function SliderRumba() {
+
+  const [artist, setArtist] = useState([]);
+  const API_URL = `${process.env.REACT_APP_API_URL}/artists`;
+
+  // Fonction pour mélanger les films aléatoirement
+  const shuffleArray = (array) => {
+    return array.sort(() => Math.random() - 0.5);
+  };
+
+  useEffect(() => {
+    const fetchSeries = async () => {
+      try {
+        const response = await axios.get(API_URL);
+        const artistsRumba = response.data.filter(
+          (item) => item.type === "rumba"
+        );
+        const shuffledSeries = shuffleArray(artistsRumba); // Mélanger les films
+        setArtist(shuffledSeries);
+      } catch (error) {
+        console.error("Erreur lors du chargement des series :", error);
+      }
+    };
+
+    fetchSeries();
+  }, [API_URL]);
+
   return (
     <>
       <div className="bg-black sm:pr-20 sm:pl-20">
@@ -66,21 +38,21 @@ export default function SliderRumba() {
           <br />
         </p>
         <div className="carousel carousel-end rounded-box cursor-pointer sm:p-6 ">
-          {carousel.map((items) => {
+        {artist.map((items) => {
             return (
               <div className="carousel-item  pl-2 pr-6 group rounded-xl relative">
-                <Link to={items.to}>
+                <Link to={`/songs/${items._id}/details`}>
                   <img
-                    src={items.imageSrc}
-                    alt={items.imageAlt}
+                    src={items.banner}
+                    alt={``}
                     className="rounded-full h-[220px] w-[260px]  sm:transform sm:transition-all sm:group-hover:scale-90"
                   />
                   <div className="absolute pl-6 m-6 bottom-0 z-30 sm:group-hover:scale-90 ">
                     <h1 className="w-64 text-lg font-semibold leading-8 mt-2 text-white">
-                      {items.artist}
+                      {items.name}
                     </h1>
                     <p className="mt-4 text-base font-medium cursor-pointer leading-4 underline text-white">
-                      {items.title}
+                      {items.network}
                     </p>
                   </div>
                 </Link>

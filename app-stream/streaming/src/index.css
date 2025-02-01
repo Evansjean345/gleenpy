@@ -38,7 +38,8 @@
   #logo{
     position: absolute;
     right: 0;
-    padding-right: 10px;
+    padding-right: 0px;
+    
   }
 }
 

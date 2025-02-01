@@ -19,7 +19,7 @@ const ObjTrailer = {
     "https://www.gifcen.com/wp-content/uploads/2022/06/naruto-gif-3.gif",
   title: "Naruto Shippuden",
   text: "Un mystérieux groupe de ninja attaque par surprise le village de Konoha et provoque de grands dommages. Le cauchemar d'une autre guerre mondiale ninja pourrait bien devenir réalité.",
-  videoModal: "https://www.dailymotion.com/embed/video/x8e62wd" ,
+  videoModal: "https://geo.dailymotion.com/player.html?video=x8z65b0" ,
 };
 
 const SecondObj = {
