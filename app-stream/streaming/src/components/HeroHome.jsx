@@ -11,7 +11,6 @@ export default function HeroHome() {
             id="video-trailer"
             className="object-cover sm:h-[510px] w-full"
             autoPlay
-            muted
             loop
             playsInline
           >

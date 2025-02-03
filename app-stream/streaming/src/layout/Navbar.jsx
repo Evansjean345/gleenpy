@@ -128,8 +128,15 @@ function Navbar() {
                 </NavLink>
               </li>
               <li>
-                  <div className="hover:bg-red-900 text-start">se connecter</div>
-
+                <NavLink
+                  to="/login"
+                  end
+                  className={({ isActive }) =>
+                    isActive ? "bg-red-700" : "hover:bg-red-900"
+                  }
+                >
+                  se connecter
+                </NavLink>
               </li>
             </ul>
           </div>
@@ -227,7 +234,15 @@ function Navbar() {
               </NavLink>
             </li>
             <li>
-              <div className="hover:bg-red-900">se connecter</div>
+              <NavLink
+                to="/login"
+                end
+                className={({ isActive }) =>
+                  isActive ? "bg-red-700" : "hover:bg-red-900"
+                }
+              >
+                se connecter
+              </NavLink>
             </li>
           </ul>
         </div>

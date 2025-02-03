@@ -1,11 +1,9 @@
 import "./dist/output.css";
-import { React, useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import ScrollToTop from "./api/ScrollToTop";
 import Loader from "./Loader";
 /////////////////////////////////////////////
 import Home from "./routes/Home";
-import Music from "./routes/Music";
 import About from "./routes/About";
 import GagHome from "./routes/GagHome";
 import DirectHome from "./routes/DirectHome";
@@ -48,9 +46,16 @@ import MooviesHomeComponent from "./movies/MooviesHomeComponent";
 import SeriesHomeComponent from "./series/SeriesHomeComponent";
 import EpisodesHomeComponent from "./episodes/EpisodesHomeComponent";
 import SongTitleComponent from "./songTitles/SongTitleComponent";
+import Login from "./routes/Login";
+import Signup from "./routes/Signup";
+//context
+import { AuthContext } from "./services/account.service";
+import { AuthProvider } from "./services/account.service";
+import { useEffect, useState, useContext, useRef } from "react";
 
 function App() {
   const [loader, setLoader] = useState(true);
+  const { login, isAuthenticated } = useContext(AuthContext);
 
   useEffect(() => {
     setTimeout(() => {
@@ -123,9 +128,20 @@ function App() {
         </Route>
         {/* About */}
         <Route path="/abouts" element={<About />} />
+        {/* Login */}
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </div>
   );
 }
 
-export default App;
+function WrappedApp() {
+  return (
+    <AuthProvider>
+      <App />
+    </AuthProvider>
+  );
+}
+
+export default WrappedApp;
