@@ -57,7 +57,6 @@ export default function Login() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(loginData),
-        credentials: "include", // Permet d'envoyer les cookies (si nécessaire)
       });
 
       if (!response.ok) {
