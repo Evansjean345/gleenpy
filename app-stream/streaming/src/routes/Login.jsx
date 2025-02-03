@@ -2,82 +2,83 @@ import { useState, useContext } from "react";
 import Navbar from "../layout/Navbar";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../services/account.service"; 
+import { AuthContext } from "../services/account.service";
 
 export default function Login() {
-    const { login, isAuthenticated } = useContext(AuthContext); // Utilisation du contexte pour login
-    const navigate = useNavigate();
-  
-    const [formData, setFormData] = useState({
-      identifier: "",
-      password: "",
-      codepin: "",
-    });
-  
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState("");
-    const [loginMode, setLoginMode] = useState(null); // Mode sélectionné : "password" ou "codepin"
-  
-    const handleChange = (e) => {
-      let { name, value } = e.target;
-  
-      // Convertir `codepin` en Number si c'est un PIN
-      if (name === "codepin") {
-        value = value.replace(/\D/g, ""); // Supprime les caractères non numériques
-        setFormData({ ...formData, codepin: value ? Number(value) : "" });
+  const { login, isAuthenticated } = useContext(AuthContext); // Utilisation du contexte pour login
+  const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    identifier: "",
+    password: "",
+    codepin: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [loginMode, setLoginMode] = useState(null); // Mode sélectionné : "password" ou "codepin"
+
+  const handleChange = (e) => {
+    let { name, value } = e.target;
+
+    // Convertir `codepin` en Number si c'est un PIN
+    if (name === "codepin") {
+      value = value.replace(/\D/g, ""); // Supprime les caractères non numériques
+      setFormData({ ...formData, codepin: value ? Number(value) : "" });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+
+    if (!loginMode) {
+      setError("Veuillez choisir une méthode de connexion.");
+      setLoading(false);
+      return;
+    }
+
+    // Préparer les données à envoyer à l'API
+    const loginData = {
+      identifier: formData.identifier,
+      ...(loginMode === "password" ? { password: formData.password } : {}),
+      ...(loginMode === "codepin" ? { codepin: formData.codepin } : {}),
+    };
+
+    console.log("loginData:", loginData); // Log des données envoyées
+    // URL de l'API pour la connexion
+    const apiUrl = `${process.env.REACT_APP_API_URL}/user/login`;
+
+    try {
+      // Envoi des données à l'API avec axios
+      const response = await axios.post(apiUrl, loginData, {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true, // Si tu veux envoyer des cookies
+      });
+
+      // Récupérer la réponse de l'API
+      const data = response.data;
+
+      // Enregistrer l'utilisateur et le token via le contexte AuthContext
+      await login(data); // Cette fonction utilise le context pour stocker le token et l'utilisateur
+
+      // Si l'utilisateur est authentifié, on le redirige vers la page d'accueil
+      if (isAuthenticated()) {
+        alert("Connexion réussie !");
+        navigate("/"); // Redirection vers la page d'accueil après succès
       } else {
-        setFormData({ ...formData, [name]: value });
+        setError("Identifiants incorrects");
       }
-    };
-  
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      setLoading(true);
-      setError("");
-  
-      if (!loginMode) {
-        setError("Veuillez choisir une méthode de connexion.");
-        setLoading(false);
-        return;
-      }
-  
-      // Préparer les données à envoyer à l'API
-      const loginData = {
-        identifier: formData.identifier,
-        ...(loginMode === "password" ? { password: formData.password } : {}),
-        ...(loginMode === "codepin" ? { codepin: formData.codepin } : {}),
-      };
-  
-      // URL de l'API pour la connexion
-      const apiUrl = `${process.env.REACT_APP_API_URL}/user/login`;
-  
-      try {
-        // Envoi des données à l'API avec axios
-        const response = await axios.post(apiUrl, loginData, {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true, // Si tu veux envoyer des cookies
-        });
-  
-        // Récupérer la réponse de l'API
-        const data = response.data;
-  
-        // Enregistrer l'utilisateur et le token via le contexte AuthContext
-        await login(data); // Cette fonction utilise le context pour stocker le token et l'utilisateur
-  
-        // Si l'utilisateur est authentifié, on le redirige vers la page d'accueil
-        if (isAuthenticated()) {
-          alert("Connexion réussie !");
-          navigate("/"); // Redirection vers la page d'accueil après succès
-        } else {
-          setError("Identifiants incorrects");
-        }
-      } catch (err) {
-        setError("Une erreur est survenue. Réessayez.");
-        console.error(err); // Log pour debugging
-      } finally {
-        setLoading(false);
-      }
-    };
+    } catch (err) {
+      setError("Une erreur est survenue. Réessayez.");
+      console.error(err); // Log pour debugging
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>
@@ -185,6 +186,12 @@ export default function Login() {
             >
               {loading ? "Connexion..." : "Se connecter"}
             </button>
+            <div className="text-white w-full text-center mt-2">
+              Vous avez n'avez pas de compte ?
+              <span className="underline">
+                <Link to="/signup">s'inscrire</Link>
+              </span>
+            </div>
           </form>
         </div>
       </div>
