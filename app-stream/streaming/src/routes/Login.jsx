@@ -3,10 +3,12 @@ import Navbar from "../layout/Navbar";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../services/account.service";
+import { Dialog, DialogBody } from "@material-tailwind/react";
 
 export default function Login() {
-  const { login, isAuthenticated } = useContext(AuthContext); // Utilisation du contexte pour login
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
+  const [size, setSize] = useState(null);
 
   const [formData, setFormData] = useState({
     identifier: "",
@@ -16,12 +18,13 @@ export default function Login() {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [loginMode, setLoginMode] = useState(null); // Mode sélectionné : "password" ou "codepin"
+  const [loginMode, setLoginMode] = useState(null); // "password" ou "codepin"
+
+  const handleOpen = (value) => setSize(value);
 
   const handleChange = (e) => {
     let { name, value } = e.target;
 
-    // Convertir `codepin` en Number si c'est un PIN
     if (name === "codepin") {
       value = value.replace(/\D/g, ""); // Supprime les caractères non numériques
       setFormData({ ...formData, codepin: value ? Number(value) : "" });
@@ -41,44 +44,24 @@ export default function Login() {
       return;
     }
 
-    // Préparer les données à envoyer à l'API
     const loginData = {
       identifier: formData.identifier,
       ...(loginMode === "password" ? { password: formData.password } : {}),
       ...(loginMode === "codepin" ? { codepin: formData.codepin } : {}),
     };
 
-    console.log("loginData:", loginData); // Log des données envoyées
-    // URL de l'API pour la connexion
-    const apiUrl = `${process.env.REACT_APP_API_URL}/user/login`;
+    console.log("Tentative de connexion avec :", loginData);
 
-    try {
-      // Envoi des données à l'API avec axios
-      const response = await axios.post(apiUrl, loginData, {
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true, // Si tu veux envoyer des cookies
-      });
+    const response = await login(loginData);
 
-      // Récupérer la réponse de l'API
-      const data = response.data;
-
-      // Enregistrer l'utilisateur et le token via le contexte AuthContext
-      await login(data); // Cette fonction utilise le context pour stocker le token et l'utilisateur
-
-      // Si l'utilisateur est authentifié, on le redirige vers la page d'accueil
-      if (isAuthenticated()) {
-        alert("Connexion réussie !");
-        navigate("/"); // Redirection vers la page d'accueil après succès
-      } else {
-        setError("Identifiants incorrects");
-      }
-    } catch (err) {
-      setError("Une erreur est survenue. Réessayez.");
-      console.error(err); // Log pour debugging
-    } finally {
-      setLoading(false);
+    if (response.success) {
+      setSize("md");
+    } else {
+      setError(response.error || "Erreur de connexion.");
     }
+    setLoading(false);
   };
+
   return (
     <>
       <Navbar />
@@ -88,6 +71,30 @@ export default function Login() {
         {/* Contenu */}
         <div className="relative w-full py-10 px-8 mt-8 sm:mt-20 flex flex-col h-full justify-center items-center bg-black rounded-lg shadow-2xl lg:max-w-xl  shadow-black ">
           <h1 className="text-3xl font-bold text-red-700 mb-6">Connexion</h1>
+
+          {/* Message de succès après la connexion */}
+          {/* Modal de confirmation */}
+          <Dialog
+            open={size !== null}
+            size={size || "md"}
+            handler={handleOpen}
+            className="bg-black text-white"
+          >
+            <DialogBody divider>
+              <div className="flex w-full flex-col items-center justify-center">
+                <span>
+                  ✅ Connexion réussie cliquez sur le bouton suivant pour
+                  commencer à regarder vos films préférés sur NEXTDEO
+                </span>
+                <Link
+                  to="/moviesHome"
+                  className="w-1/2 px-6 py-3 mt-4 text-center rounded-lg text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-red-700 hover:bg-white hover:text-black focus:outline-none focus:ring focus:ring-red-700 focus:ring-opacity-50"
+                >
+                  streaming
+                </Link>
+              </div>
+            </DialogBody>
+          </Dialog>
 
           {/* Boutons de choix du mode de connexion */}
           <div className="flex gap-4 mb-6">

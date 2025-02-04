@@ -1,14 +1,37 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useContext, useState, useEffect } from "react";
+import { Link, NavLink } from "react-router-dom";
 import "../index.css";
+import { AuthContext } from "../services/account.service";
 
 function Navbar() {
+  const { isAuthenticated, getUserInfo, logout, user, token } =
+    useContext(AuthContext);
+  const [userInfo, setUserInfo] = useState(null);
+
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      if (isAuthenticated() && !user) {
+        const userId = localStorage.getItem("userId");
+        const fetchedUserInfo = await getUserInfo(userId);
+        if (fetchedUserInfo) {
+          setUserInfo(fetchedUserInfo);
+        }
+      } else {
+        setUserInfo(user);
+      }
+    };
+
+    fetchUserInfo();
+  }, [user, isAuthenticated, getUserInfo]);
+
+  console.log("info", userInfo);
+
   return (
     <>
       <nav className="navbar bg-black fixed z-50">
         <div id="logo" className="navbar-end">
           <NavLink to="/" className="bg-black text-red-700 text-2xl font-bold">
-            <img src="/logo.png" alt="logo" className="h-[64px] w-32" />
+            <img src="/logo.png" alt="logo" className="h-[64px] w-[180px]" />
           </NavLink>
         </div>
         {/* Nav mobile version Start */}
@@ -233,17 +256,48 @@ function Navbar() {
                 Partenaires
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                to="/login"
-                end
-                className={({ isActive }) =>
-                  isActive ? "bg-red-700" : "hover:bg-red-900"
-                }
-              >
-                se connecter
-              </NavLink>
-            </li>
+            {!isAuthenticated() ? (
+              <li>
+                <NavLink
+                  to="/login"
+                  end
+                  className={({ isActive }) =>
+                    isActive ? "bg-red-700" : "hover:bg-red-900"
+                  }
+                >
+                  se connecter
+                </NavLink>
+              </li>
+            ) : (
+              <li>
+                <div className="dropdown dropdown-hover  dropdown-right">
+                  <div tabIndex={0}>
+                    <div className="avatar h-8 w-8">
+                      <div className="ring-[red] ring-offset-base-100  rounded-full ring ring-offset-2">
+                        <img
+                          src={
+                            userInfo?.photo === null
+                              ? "/avatar.webp"
+                              : userInfo?.photo
+                          }
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <ul
+                    tabIndex={0}
+                    className="dropdown-content menu bg-black rounded-box z-[1] w-40 p-2 shadow"
+                  >
+                    <li>
+                      <Link to="">mon compte</Link>
+                    </li>
+                    <li>
+                      <div onClick={logout}>se deconnecter</div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            )}
           </ul>
         </div>
         {/* Nav PC version End */}

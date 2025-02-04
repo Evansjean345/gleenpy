@@ -1,91 +1,117 @@
-import Cookies from "js-cookie";
-import { createContext, useState, useEffect } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios"; // Importation d'axios
+import axios from "axios";
 
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [token, setToken] = useState(Cookies.get("jwt") || null);
   const navigate = useNavigate();
+  const [user, setUser] = useState(() => {
+    const storedUser = localStorage.getItem("user");
+    return storedUser ? JSON.parse(storedUser) : null;
+  });
 
-  useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/user`, {
-          withCredentials: true, // Permet d'inclure les cookies
-        });
+  const [token, setToken] = useState(localStorage.getItem("token") || null);
 
-        if (response.status === 200) {
-          setUser(response.data);
-        } else {
-          setUser(null);
-          Cookies.remove("jwt");
+  const checkAuth = async () => {
+    const token = localStorage.getItem("token");
+    const userId = localStorage.getItem("userId");
+
+    if (!token || !userId) return false;
+
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/user/${userId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
         }
-      } catch (error) {
-        console.error("Erreur lors de la vérification de l'utilisateur :", error);
-        setUser(null);
-      }
-    };
+      );
 
-    checkAuth();
-  }, []);
+      if (response.status === 200) {
+        return true; // L'utilisateur est authentifié
+      } else {
+        return false; // Si le statut n'est pas 200, considérer comme non authentifié
+      }
+    } catch (error) {
+      console.error("Erreur lors de la vérification de l'utilisateur :", error);
+      return false;
+    }
+  };
 
   const login = async ({ identifier, password, codepin }) => {
     try {
       const response = await axios.post(
         `${process.env.REACT_APP_API_URL}/user/login`,
         { identifier, password, codepin },
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true, // Inclure les cookies dans la requête
-        }
+        { headers: { "Content-Type": "application/json" } }
       );
 
-      if (response.status !== 200) {
-        throw new Error("Échec de la connexion");
-      }
+      if (response.status !== 200) throw new Error("Échec de la connexion");
 
-      setUser(response.data.userId);
-      setToken(response.data.token);
-      Cookies.set("jwt", response.data.token);
+      const { token, userId } = response.data;
+
+      // Stocker les informations
+      localStorage.setItem("token", token);
+      localStorage.setItem("userId", userId);
+      setToken(token);
+
+      // Récupérer les informations de l'utilisateur après connexion
+      const userInfo = await getUserInfo(userId);
+      if (userInfo) {
+        setUser(userInfo);
+        localStorage.setItem("user", JSON.stringify(userInfo));
+      }
+      return { success: true };
     } catch (error) {
       console.error("Erreur lors de la connexion :", error);
+      return {
+        success: false,
+        error: "Identifiants incorrects ou erreur réseau.",
+      };
     }
   };
 
   const isAuthenticated = () => !!token;
 
-  const getUserInfo = async () => {
+  const getUserInfo = async (userId) => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/user/${user?._id}`,
+        `${process.env.REACT_APP_API_URL}/user/${userId}`,
         {
-          withCredentials: true, // Inclure les cookies dans la requête
+          headers: { Authorization: `Bearer ${token}` },
         }
       );
 
-      if (response.status !== 200) {
-        throw new Error("Impossible de récupérer les informations de l'utilisateur");
-      }
+      if (response.status !== 200)
+        throw new Error("Impossible de récupérer les informations");
       return response.data;
     } catch (error) {
-      console.error("Erreur lors de la récupération des infos de l'utilisateur :", error);
+      console.error(
+        "Erreur lors de la récupération des infos utilisateur :",
+        error
+      );
+      return null;
     }
   };
 
   const logout = async () => {
     try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/user/logout`, {}, {
-        withCredentials: true, // Inclure les cookies dans la requête
-      });
-      setUser(null);
-      setToken(null);
-      Cookies.remove("jwt");
-      //navigate("/")
+      await axios.post(
+        `${process.env.REACT_APP_API_URL}/user/logout`,
+        {},
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
     } catch (error) {
       console.error("Erreur lors de la déconnexion :", error);
+    } finally {
+      localStorage.removeItem("token");
+      localStorage.removeItem("userId");
+      localStorage.removeItem("user");
+      setUser(null);
+      setToken(null);
+      navigate("/login");
     }
   };
 
@@ -94,6 +120,7 @@ const AuthProvider = ({ children }) => {
       value={{
         user,
         token,
+        checkAuth,
         login,
         isAuthenticated,
         getUserInfo,
