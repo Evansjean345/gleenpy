@@ -150,17 +150,45 @@ function Navbar() {
                   Partenaires
                 </NavLink>
               </li>
-              <li>
-                <NavLink
-                  to="/login"
-                  end
-                  className={({ isActive }) =>
-                    isActive ? "bg-red-700" : "hover:bg-red-900"
-                  }
-                >
-                  se connecter
-                </NavLink>
-              </li>
+              {!isAuthenticated() ? (
+                <li>
+                  <NavLink
+                    to="/login"
+                    end
+                    className={({ isActive }) =>
+                      isActive ? "bg-red-700" : "hover:bg-red-900"
+                    }
+                  >
+                    se connecter
+                  </NavLink>
+                </li>
+              ) : (
+                <li>
+                  <details className="dropdown ">
+                    <summary className="btn m-1">
+                      <div className="avatar h-8 w-8">
+                        <div className="ring-[red] ring-offset-base-100  rounded-full ring ring-offset-2">
+                          <img
+                            src={
+                              userInfo?.photo === null
+                                ? "/avatar.webp"
+                                : userInfo?.photo
+                            }
+                          />
+                        </div>
+                      </div>
+                    </summary>
+                    <ul className="menu bg-black dropdown-content bg-base-100 rounded-box z-[1] w-40 p-2 shadow">
+                      <li>
+                        <Link to="">mon compte</Link>
+                      </li>
+                      <li>
+                        <div onClick={logout}>se deconnecter</div>
+                      </li>
+                    </ul>
+                  </details>
+                </li>
+              )}
             </ul>
           </div>
         </div>

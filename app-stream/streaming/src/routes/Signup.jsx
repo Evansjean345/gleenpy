@@ -53,7 +53,7 @@ export default function Signup() {
       const response = await axios.post(apiUrl, data, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-      setSize("md");
+      setSize("xl");
       console.log("Reponse :", response.data);
     } catch (error) {
       console.error("Erreur lors de l'inscription :", error);
@@ -72,7 +72,7 @@ export default function Signup() {
         {/* Modal de confirmation */}
         <Dialog
           open={size !== null}
-          size={size || "md"}
+          size={size || "xl"}
           handler={handleOpen}
           className="bg-black text-white"
         >
@@ -109,7 +109,7 @@ export default function Signup() {
                     value={formData.fullname}
                     onChange={handleChange}
                     placeholder="Entrez votre nom"
-                    class="block w-full px-5 py-3 mt-2 rounded-lg text-white placeholder-gray-400 bg-red-700 border border-gray-200  dark:placeholder-gray-600 dark:text-white dark:border-gray-700 focus:border-red-700 dark:focus:border-red-700 focus:ring-red-700 focus:outline-none focus:ring focus:ring-opacity-40"
+                    class="block w-full px-5 py-3 mt-2 rounded-lg text-white placeholder-black bg-black border border-gray-200  dark:placeholder-gray-600 dark:text-white dark:border-gray-700 focus:border-red-700 dark:focus:border-red-700 focus:ring-red-700 focus:outline-none focus:ring focus:ring-opacity-40"
                     required
                   />
                 </div>
@@ -128,7 +128,7 @@ export default function Signup() {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="entrez votre addresse mail"
-                    class="block w-full px-5 rounded-lg py-3 mt-2 text-white placeholder-gray-400 bg-red-700  border border-gray-200  dark:placeholder-gray-600 dark:text-gray-300 dark:border-gray-700 focus:border-red-700 dark:focus:border-red-700 focus:ring-red-700 focus:outline-none focus:ring focus:ring-opacity-40"
+                    class="block w-full px-5 rounded-lg py-3 mt-2 text-white placeholder-black bg-black  border border-gray-200  dark:placeholder-gray-600 dark:text-gray-300 dark:border-gray-700 focus:border-red-700 dark:focus:border-red-700 focus:ring-red-700 focus:outline-none focus:ring focus:ring-opacity-40"
                     required
                   />
                 </div>
@@ -146,7 +146,7 @@ export default function Signup() {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="entrez votre numero de telephone"
-                    class="block w-full rounded-lg px-5 py-3 mt-2 text-white placeholder-gray-400 bg-red-700 dark:bg-red-700 border border-gray-200  dark:placeholder-gray-600 dark:text-gray-300 dark:border-gray-700 focus:border-red-700 dark:focus:border-red-700 focus:ring-red-700 focus:outline-none focus:ring focus:ring-opacity-40"
+                    class="block w-full rounded-lg px-5 py-3 mt-2 text-white placeholder-black bg-black  border border-gray-200  dark:placeholder-gray-600 dark:text-gray-300 dark:border-gray-700 focus:border-red-700 dark:focus:border-red-700 focus:ring-red-700 focus:outline-none focus:ring focus:ring-opacity-40"
                     required
                   />
                 </div>
@@ -166,7 +166,7 @@ export default function Signup() {
                     value={formData.password}
                     onChange={handleChange}
                     placeholder="entrez votre numero de telephone"
-                    class="block w-full rounded-lg px-5 py-3 mt-2 text-white placeholder-gray-400 bg-red-700  border border-gray-200  dark:placeholder-gray-600 dark:text-gray-300 dark:border-gray-700 focus:border-red-700 dark:focus:border-red-700 focus:ring-red-700 focus:outline-none focus:ring focus:ring-opacity-40"
+                    class="block w-full rounded-lg px-5 py-3 mt-2 text-white placeholder-black bg-black  border border-gray-200  dark:placeholder-gray-600 dark:text-gray-300 dark:border-gray-700 focus:border-red-700 dark:focus:border-red-700 focus:ring-red-700 focus:outline-none focus:ring focus:ring-opacity-40"
                     required
                   />
                 </div>
@@ -184,7 +184,7 @@ export default function Signup() {
                     value={formData.codepin}
                     onChange={handleChange}
                     placeholder="entrez votre numero de telephone"
-                    class="block w-full rounded-lg px-5 py-3 mt-2 text-white placeholder-gray-400 bg-red-700  border border-gray-200  dark:placeholder-gray-600 dark:text-gray-300 dark:border-gray-700 focus:border-red-700 dark:focus:border-red-700 focus:ring-red-700 focus:outline-none focus:ring focus:ring-opacity-40"
+                    class="block w-full rounded-lg px-5 py-3 mt-2 text-white placeholder-black bg-black  border border-gray-200  dark:placeholder-gray-600 dark:text-gray-300 dark:border-gray-700 focus:border-red-700 dark:focus:border-red-700 focus:ring-red-700 focus:outline-none focus:ring focus:ring-opacity-40"
                     required
                   />
                 </div>

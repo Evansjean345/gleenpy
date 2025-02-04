@@ -55,7 +55,7 @@ export default function Login() {
     const response = await login(loginData);
 
     if (response.success) {
-      setSize("md");
+      setSize("xl");
     } else {
       setError(response.error || "Erreur de connexion.");
     }
@@ -76,7 +76,7 @@ export default function Login() {
           {/* Modal de confirmation */}
           <Dialog
             open={size !== null}
-            size={size || "md"}
+            size={size || "xl"}
             handler={handleOpen}
             className="bg-black text-white"
           >
@@ -101,8 +101,8 @@ export default function Login() {
             <button
               className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
                 loginMode === "password"
-                  ? "bg-red-700 text-white"
-                  : "bg-gray-700 hover:bg-red-700"
+                  ? "bg-gray-700 text-white"
+                  : "bg-red-700 hover:bg-gray-700"
               }`}
               onClick={() => {
                 setLoginMode("password");
@@ -115,8 +115,8 @@ export default function Login() {
             <button
               className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
                 loginMode === "codepin"
-                  ? "bg-red-700 text-white"
-                  : "bg-gray-700 hover:bg-red-700"
+                  ? "bg-gray-700 text-white"
+                  : "bg-red-700 hover:bg-gray-700"
               }`}
               onClick={() => {
                 setLoginMode("codepin");
@@ -129,7 +129,7 @@ export default function Login() {
 
           <form
             onSubmit={handleSubmit}
-            className="bg-gray-900 p-8 rounded-lg shadow-lg w-96"
+            className="bg-balck p-8 rounded-lg shadow-lg w-full"
           >
             {error && <p className="text-red-500 mb-4">{error}</p>}
 
