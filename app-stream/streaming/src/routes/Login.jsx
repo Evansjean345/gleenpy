@@ -99,7 +99,7 @@ export default function Login() {
           {/* Boutons de choix du mode de connexion */}
           <div className="flex gap-4 mb-6">
             <button
-              className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
+              className={`px-4 py-2 rounded-lg text-white font-semibold transition-colors ${
                 loginMode === "password"
                   ? "bg-gray-700 text-white"
                   : "bg-red-700 hover:bg-gray-700"
@@ -113,7 +113,7 @@ export default function Login() {
             </button>
 
             <button
-              className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
+              className={`px-4 py-2 rounded-lg  text-white font-semibold transition-colors ${
                 loginMode === "codepin"
                   ? "bg-gray-700 text-white"
                   : "bg-red-700 hover:bg-gray-700"
