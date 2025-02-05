@@ -121,7 +121,7 @@ export default function MooviesHomeComponent() {
           <div class="container px-5 py-24 mx-auto">
             <div class="flex flex-col">
               <div class="h-1 bg-gray-200 rounded overflow-hidden">
-                <div class="w-[70%] h-full bg-red-700"></div>
+                <div class="w-[100%] h-full bg-red-700"></div>
                 {/*progess bar */}
               </div>
               <div class="flex flex-wrap sm:flex-row flex-col py-6 mb-12">
@@ -168,7 +168,7 @@ export default function MooviesHomeComponent() {
             </section>
             {/*section Season Hero End */}
             {/*section Tabs Start  */}
-            {/*<TabsMovies /> */}
+            <TabsMovies /> 
             {/*section Tabs End  */}
           </div>
         </section>
