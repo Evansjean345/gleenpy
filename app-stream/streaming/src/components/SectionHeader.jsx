@@ -15,8 +15,11 @@ function SectionHeader() {
     const fetchSeries = async () => {
       try {
         const response = await axios.get(API_URL);
-        const loadmoovies = response.data;
-        const shuffledMoovies = shuffleArray(loadmoovies); // Mélanger les films
+        const loadMoovies = response.data;
+        const filteredMoovies = loadMoovies.filter(
+          (moovie) => moovie.type !== "ghibli" && moovie.type !== "africain"
+        );
+        const shuffledMoovies = shuffleArray(filteredMoovies); // Mélanger les films
         const limitedMoovies = shuffledMoovies.slice(0, 3); // Limiter à 10 films
         setMoovies(limitedMoovies);
       } catch (error) {

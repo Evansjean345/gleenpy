@@ -3,8 +3,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 export default function SlideHeader() {
-  const [series, setSeries] = useState([]);
-  const API_URL = `${process.env.REACT_APP_API_URL}/series`;
+  const [moovies, setMoovies] = useState([]);
+  const API_URL = `${process.env.REACT_APP_API_URL}/moovies`;
 
   // Fonction pour mélanger les films aléatoirement
   const shuffleArray = (array) => {
@@ -15,9 +15,12 @@ export default function SlideHeader() {
     const fetchSeries = async () => {
       try {
         const response = await axios.get(API_URL);
-        const loadseries = response.data;
-        const shuffledSeries = shuffleArray(loadseries); // Mélanger les films
-        setSeries(shuffledSeries);
+        const loadMoovies = response.data;
+        const filteredMoovies = loadMoovies.filter(
+          (moovie) => moovie.type !== "ghibli" && moovie.type !== "africain"
+        );
+        const shuffledMoovies = shuffleArray(filteredMoovies); // Mélanger les films
+        setMoovies(shuffledMoovies);
       } catch (error) {
         console.error("Erreur lors du chargement des series :", error);
       }
@@ -29,13 +32,13 @@ export default function SlideHeader() {
   return (
     <div className="bg-black sm:pr-20 sm:pl-20">
       <div className="carousel carousel-end rounded-box cursor-pointer sm:p-6">
-        {series.map((items) => {
+        {moovies.map((items) => {
           return (
             <div
               key={items?._id}
               className="carousel-item  pl-2 pr-6 rounded-xl relative"
             >
-              <Link to={`/seriesHome/${items?._id}/details`}>
+              <Link to={`/mooviesHome/${items?._id}`}>
                 <img
                   src={items?.banner}
                   alt={``}

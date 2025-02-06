@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import HeroMovies from "../components/HeroMovies";
 import SliderAnimatedMovies from "../components/SliderAnimatedMovies";
 import SliderAnime from "../components/SliderAnime";
@@ -14,108 +14,122 @@ import SliderPrime from "../prime/SliderPrime";
 import Navbar from "../layout/Navbar";
 
 export default function HomeMovies() {
-  const prime = useRef(null);
-  const nollywood = useRef(null);
-  const comedie = useRef(null);
+  const [activeSection, setActiveSection] = useState(null);
 
-  const scrollToSection = (elementRef) => {
-    window.scrollTo({
-      top: elementRef.current.offsetTop,
-      behavior: "smooth",
-    });
-  };
   return (
     <>
       <div className="bg-black m-0 p-0 h-[100vh] w-full">
-        <Navbar/>
+        <Navbar />
         <br />
         <br />
         <br />
         <br />
-        <div className="btn-group flex justify-center w-full sm:gap-x-20 gap-x-2   bg-black">
-          <div>
-            <a
-              href="https://www.netflix.com/ci/"
-              className="flex items-center justify-center hover:bg-red-900 text-md lg:hover:text-lg rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
-            >
-              NETFLIX
-            </a>
-          </div>
-          <div>
+        <div className="btn-group flex justify-center w-full sm:gap-x-12 gap-x-2   bg-black">
+          <div className="bg-red-700 rounded-md">
             <button
               onClick={() => {
-                scrollToSection(prime);
+                setActiveSection("netflix");
               }}
-              className="hover:bg-red-900 text-md lg:hover:text-lg rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
+              className=" text-xs p-1
+               rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
+            >
+              NETFLIX
+            </button>
+          </div>
+          <div className="bg-red-700 rounded-md">
+            <button
+              onClick={() => {
+                setActiveSection("prime");
+              }}
+              className="hover:bg-red-900 text-xs p-1 rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
             >
               PRIME
             </button>
           </div>
-          <div>
+          <div className="bg-red-700 rounded-md">
             {" "}
             <button
               onClick={() => {
-                scrollToSection(nollywood);
+                setActiveSection("nollywod");
               }}
-              className="hover:bg-red-900 text-md lg:hover:text-lg rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
+              className="hover:bg-red-900 text-xs p-1  rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
             >
               NOLLYWOOD
             </button>
           </div>
-          <div>
+          <div className="bg-red-700 rounded-md">
             {" "}
             <button
               onClick={() => {
-                scrollToSection(comedie);
+                setActiveSection("comedie");
               }}
-              className="hover:bg-red-900 text-md lg:hover:text-lg rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
+              className="hover:bg-red-900 text-xs p-1 rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
             >
               COMEDIE
+            </button>
+          </div>
+          <div className="bg-red-700 rounded-md">
+            {" "}
+            <button
+              onClick={() => {
+                setActiveSection(null);
+              }}
+              className="hover:bg-red-900 text-xs p-1 rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
+            >
+              TOUS LES FILMS
             </button>
           </div>
         </div>
         <br />
         <div className="bg-black">
           <HeroMovies />
-          <SliderNovelas />
-          <br />
-          <br />
-          <section ref={nollywood}>
-            <SliderNollywood />
-          </section>
-          <br />
-          <br />
-          <section>
-            <SliderAfrican />
-          </section>
-          <br />
-          <br />
-          <section ref={comedie}>
-            <SliderComedie />
-          </section>
-          <br />
-          <br />
-          <section>
-            <SliderNetflix />
-          </section>
-          <br />
-          <br />
-          <section ref={prime}>
-            <SliderPrime />
-          </section>
-          <br />
-          <br />
-          {/*
+          {activeSection === null && (
+            <>
+              <SliderNovelas />
+              <br />
+              <br />
+              <section>
+                <SliderNollywood />
+              </section>
+              <br />
+              <br />
+              <section>
+                <SliderAfrican />
+              </section>
+              <br />
+              <br />
+              <section>
+                <SliderComedie />
+              </section>
+              <br />
+              <br />
+              <section>
+                <SliderNetflix />
+              </section>
+              <br />
+              <br />
+              <section>
+                <SliderPrime />
+              </section>
+              <br />
+              <br />
+              {/*
           <SliderMovies />
           <br />
           <br /> */}
-          <SliderHF />
-          <br />
-          <br />
-          <SliderAnime />
-          <br />
-          <br />
-          <SliderAnimatedMovies />
+              <SliderHF />
+              <br />
+              <br />
+              <SliderAnime />
+              <br />
+              <br />
+              <SliderAnimatedMovies />
+            </>
+          )}
+          {activeSection === "nollywod" && <SliderNollywood />}
+          {activeSection === "comedie" && <SliderComedie />}
+          {activeSection === "prime" && <SliderPrime />}
+          {activeSection === "netflix" && <SliderNetflix />}
           <Footer />
         </div>
       </div>

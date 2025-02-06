@@ -33,27 +33,27 @@ export default function MusicHome() {
           className="btn-group flex w-full justify-center  sm:gap-x-16 gap-x-20
          bg-black"
         >
-          <div className="w-[45%] flex justify-end ">
+          <div className="w-[50%] flex justify-end ">
             <button
               onClick={() => {
                 setAllstars(!allstars);
                 setGrass(false);
               }}
-              className="hover:bg-red-900 text-md lg:hover:text-lg rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
+              className="bg-red-700 p-2 text-xs  rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
             >
-              All STARS
+              CLIP
             </button>
           </div>
-          <div className="w-[55%] ">
+          <div className="w-[50%] ">
             {" "}
             <button
               onClick={() => {
                 setGrass(!grass);
                 setAllstars(false);
               }}
-              className="hover:bg-red-900 text-md lg:hover:text-lg rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
+              className="bg-red-700 p-2 text-xs  rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
             >
-              EN HERBE
+              MP3
             </button>
           </div>
         </div>

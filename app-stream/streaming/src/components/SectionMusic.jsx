@@ -18,7 +18,7 @@ function SectionMusic() {
         const response = await axios.get(API_URL);
         const artistsload = response.data;
         const shuffledSeries = shuffleArray(artistsload); // Mélanger les films
-        const limitedMoovies = shuffledSeries.slice(0, 10); // Limiter à 10 films
+        const limitedMoovies = shuffledSeries.slice(0, 8); // Limiter à 10 films
         setArtist(limitedMoovies);
       } catch (error) {
         console.error("Erreur lors du chargement des series :", error);
