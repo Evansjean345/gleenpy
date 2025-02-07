@@ -1,4 +1,4 @@
-import { useState, React } from "react";
+import { React } from "react";
 import "../index.css";
 import { Typewriter } from "react-simple-typewriter";
 
@@ -21,9 +21,9 @@ export default function HeroHome() {
             id="trailer-text"
           >
             <div className="  sm:pt-40 pt-0  ">
-              <span className="font-bold text-xl sm:text-3xl text-[#B91C1C] ">
+              <span className="font-bold text-xl sm:text-2xl text-[#B91C1C] ">
                 <Typewriter
-                  words={["BIENVENUE SUR NEXTDEO"]}
+                  words={["PLATEFORME DE STREAMING "]}
                   loop={false}
                   cursor
                   cursorStyle="_"
@@ -33,9 +33,9 @@ export default function HeroHome() {
                 />
               </span>
               <br />
-              <span className="font-bold text-xl sm:text-3xl text-[#B91C1C]">
+              <span className="font-bold text-xl sm:text-2xl text-[#B91C1C]">
                 <Typewriter
-                  words={["LA PLATEFORME DE STREAMING AFRICAINE"]}
+                  words={["ET DE PROMOTION DES OEUVRES AFRICAINES"]}
                   loop={false}
                   cursor
                   cursorStyle="_"
