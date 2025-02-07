@@ -15,7 +15,7 @@ export default function HeroLyrics() {
             <h1 className="sm:text-3xl text-xl">
               <b>
                 Découvrez les dernières tendances des hommes de DIEU en exclu
-                sur Gleenpy
+                sur NEXTDEO
               </b>
             </h1>
           </div>
@@ -24,7 +24,7 @@ export default function HeroLyrics() {
               <b>
                 Découvrez les dernières tendances
                 <br />
-                des hommes de DIEU en exclu sur Gleenpy
+                des hommes de DIEU en exclu sur NEXTDEO
               </b>
             </h1>
           </div>

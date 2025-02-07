@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import HeroMovies from "../components/HeroMovies";
 import SliderAnimatedMovies from "../components/SliderAnimatedMovies";
 import SliderAnime from "../components/SliderAnime";
@@ -12,6 +12,11 @@ import SliderComedie from "../comedie/ComedieSlider";
 import SliderNetflix from "../netflix/SliderNetflix";
 import SliderPrime from "../prime/SliderPrime";
 import Navbar from "../layout/Navbar";
+import ItemsNollywood from "../components/ItemsNollywood";
+import ItemsPrime from "../components/ItemsPrime";
+import ItemsComedie from "../components/ItemsComedie";
+import ItemsNetflix from "../components/ItemsNetflix";
+import ItemsChild from "../components/ItemsChild";
 
 export default function HomeMovies() {
   const [activeSection, setActiveSection] = useState(null);
@@ -24,14 +29,14 @@ export default function HomeMovies() {
         <br />
         <br />
         <br />
-        <div className="btn-group flex justify-center w-full sm:gap-x-12 gap-x-2   bg-black">
+        <div className="btn-group flex justify-center w-full sm:gap-x-12 gap-x-1   bg-black">
           <div className="bg-red-700 rounded-md">
             <button
               onClick={() => {
                 setActiveSection("netflix");
               }}
-              className=" text-xs p-1
-               rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
+              className=" text-xs p-[2px]
+               rounded-lg text-white hover:text-gray-100 sm:p-1  active:bg-white active:text-black"
             >
               NETFLIX
             </button>
@@ -41,7 +46,7 @@ export default function HomeMovies() {
               onClick={() => {
                 setActiveSection("prime");
               }}
-              className="hover:bg-red-900 text-xs p-1 rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
+              className="hover:bg-red-900 text-xs p-[2px] sm:p-1  rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
             >
               PRIME
             </button>
@@ -50,9 +55,9 @@ export default function HomeMovies() {
             {" "}
             <button
               onClick={() => {
-                setActiveSection("nollywod");
+                setActiveSection("nollywood");
               }}
-              className="hover:bg-red-900 text-xs p-1  rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
+              className="hover:bg-red-900 text-xs p-[2px] sm:p-1   rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
             >
               NOLLYWOOD
             </button>
@@ -63,7 +68,7 @@ export default function HomeMovies() {
               onClick={() => {
                 setActiveSection("comedie");
               }}
-              className="hover:bg-red-900 text-xs p-1 rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
+              className="hover:bg-red-900 text-xs p-[2px] sm:p-1  rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
             >
               COMEDIE
             </button>
@@ -72,9 +77,20 @@ export default function HomeMovies() {
             {" "}
             <button
               onClick={() => {
+                setActiveSection("child");
+              }}
+              className="hover:bg-red-900 text-xs p-[2px] sm:p-1  rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
+            >
+              ENFANTS
+            </button>
+          </div>
+          <div className="bg-red-700 rounded-md">
+            {" "}
+            <button
+              onClick={() => {
                 setActiveSection(null);
               }}
-              className="hover:bg-red-900 text-xs p-1 rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
+              className="hover:bg-red-900 text-xs p-[2px] sm:p-1 rounded-lg text-white hover:text-gray-100 active:bg-white active:text-black"
             >
               TOUS LES FILMS
             </button>
@@ -126,10 +142,11 @@ export default function HomeMovies() {
               <SliderAnimatedMovies />
             </>
           )}
-          {activeSection === "nollywod" && <SliderNollywood />}
-          {activeSection === "comedie" && <SliderComedie />}
-          {activeSection === "prime" && <SliderPrime />}
-          {activeSection === "netflix" && <SliderNetflix />}
+          {activeSection === "nollywood" && <ItemsNollywood />}
+          {activeSection === "comedie" && <ItemsComedie />}
+          {activeSection === "prime" && <ItemsPrime />}
+          {activeSection === "netflix" && <ItemsNetflix />}
+          {activeSection === "child" && <ItemsChild />}
           <Footer />
         </div>
       </div>
