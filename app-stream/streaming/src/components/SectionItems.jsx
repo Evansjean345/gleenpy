@@ -4,12 +4,12 @@ import { Link, useNavigate } from "react-router-dom";
 
 function SectionItems() {
   const navigate = useNavigate();
-  const [moovies, setMoovies] = useState([]);
-  const API_URL = `${process.env.REACT_APP_API_URL}/moovies`;
+  const [mooviesGroups, setMooviesGroups] = useState([[], [], [], []]);
+  const API_URL = `${process.env.REACT_APP_API_URL}/series`;
 
   // Fonction pour mélanger les films aléatoirement
   const shuffleArray = (array) => {
-    return array.sort(() => Math.random() - 0.5);
+    return [...array].sort(() => Math.random() - 0.5);
   };
 
   useEffect(() => {
@@ -18,11 +18,19 @@ function SectionItems() {
         const response = await axios.get(API_URL);
         const loadMoovies = response.data;
         const filteredMoovies = loadMoovies.filter(
-          (moovie) => moovie.type !== "ghibli" && moovie.type !== "africain"
+          (moovie) => moovie.type === "novelas"
         );
-        const shuffledMoovies = shuffleArray(filteredMoovies); // Mélanger les films
-        const limitedMoovies = shuffledMoovies.slice(0, 8); // Limiter à 10 films
-        setMoovies(limitedMoovies);
+        const shuffledMoovies = shuffleArray(filteredMoovies);
+
+        //Découper en 4 groupes distincts
+        const chunkSize = Math.ceil(shuffledMoovies.length / 4);
+        const groups = [
+          shuffledMoovies.slice(0, chunkSize),
+          shuffledMoovies.slice(chunkSize, 2 * chunkSize),
+          shuffledMoovies.slice(2 * chunkSize, 3 * chunkSize),
+          shuffledMoovies.slice(3 * chunkSize),
+        ];
+        setMooviesGroups(groups);
       } catch (error) {
         console.error("Erreur lors du chargement des series :", error);
       }
@@ -33,54 +41,73 @@ function SectionItems() {
 
   return (
     <>
-      <article>
-        <div className="bg-black">
-          <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-            <p className="mt-2 text-2xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl">
-              Nos programmes
-            </p>
-            <br />
-            <br />
-            <div className="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8 ">
-              {moovies.map((item) => (
-                <Link
-                  key={item._id}
-                  to={`/mooviesHome/${item?._id}`}
-                  className="group transform sm:hover:scale-125 transition-all  "
-                >
-                  <h3 className="mt-4 text-sm text-gray-400">
-                    {item?.network}
-                  </h3>
-                  <p className="mt-1 text-lg font-medium text-white">
-                    {item?.title}
-                  </p>
-                  <br />
-                  <div className="w-full aspect-w-1 aspect-h-1 bg-gray-400 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8  relative ">
-                    <img
-                      src={item?.banner}
-                      alt={""}
-                      className="w-full h-56 object-center object-cover group-hover:opacity-75"
-                    />
-                  </div>
-                </Link>
-              ))}
+      <div className="bg-black my-6 sm:my-24">
+        <article>
+          <div className="bg-[url('/novelas_banner.png')]  sm:h-96 bg-contain bg-no-repeat sm:bg-cover">
+            <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
+              {/*
+             <h2 className="text-xl font-extrabold tracking-tight text-white sm:text-3xl">
+              <span className="sm:block hidden">
+                Retrouvez vos films et series préférés sur NEXTDEO
+              </span>
+            </h2> */}
+              <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0"></div>
             </div>
           </div>
-          <br />
-          <br />
-          <div className="flex justify-center">
-            <button
-              onClick={() => {
-                navigate("/moviesHome");
-              }}
-              id="toggler"
-              className="btn btn-wide rounded-full bg-red-700 hover:bg-white hover:text-black active:bg-red-900 focus:outline-none focus:ring focus:ring-red-900 transform hover:scale-125"
-            >
-              voir Plus
-            </button>
+        </article>
+      </div>
+      <div className="bg-black sm:pr-20 sm:pl-20">
+        <h2 className="text-xl font-extrabold tracking-tight p-6 text-white sm:text-3xl">
+          <span>Gavez vous avec du Novelas</span>
+        </h2>
+
+        {mooviesGroups.map((moovies, index) => (
+          <div
+            key={index}
+            className="carousel carousel-end rounded-box cursor-pointer p-2 py-6  sm:p-6"
+          >
+            {moovies.map((items) => (
+              <div
+                key={items?._id}
+                className="carousel-item pl-2 pr-2 sm:pr-6 rounded-xl relative"
+              >
+                <Link to={`/seriesHome/${items?._id}/details`}>
+                  <img
+                    src={items?.banner}
+                    alt=""
+                    className="rounded-xl h-[150px] w-[170px] sm:h-[300px] sm:w-[340px] sm:transform sm:transition-all sm:hover:scale-90"
+                  />
+                  <div className="absolute m-6 bottom-0 z-30">
+                    <p className="text-xs sm:text-sm leading-none text-white">
+                      {items?.rating}/10
+                    </p>
+                    <h1 className="w-full text-xs sm:text-2xl font-semibold sm:leading-8 mt-2 text-white">
+                      {items?.title}
+                    </h1>
+                    <p className="mt-4 text-xs sm:text-base font-medium cursor-pointer leading-4 underline text-white">
+                      {items?.network}
+                    </p>
+                  </div>
+                </Link>
+              </div>
+            ))}
           </div>
+        ))}
+
+        <br />
+        <br />
+        <div className="flex justify-center sm:justify-end">
+          <button
+            onClick={() => {
+              navigate("/moviesHome");
+            }}
+            id="toggler"
+            className="btn btn-wide text-white rounded-full bg-red-700 hover:bg-white hover:text-black active:bg-red-900 focus:outline-none focus:ring focus:ring-red-900 transform hover:scale-125"
+          >
+            voir Plus
+          </button>
         </div>
-      </article>
+      </div>
     </>
   );
 }

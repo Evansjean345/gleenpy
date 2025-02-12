@@ -35,21 +35,21 @@ export default function SliderFR() {
           <br />
           <br />
         </p>
-        <div className="carousel carousel-end rounded-box cursor-pointer sm:p-6 ">
+        <div className="carousel carousel-end rounded-box cursor-pointer p-2 sm:p-6 ">
           {artist.map((items) => {
             return (
-              <div className="carousel-item  pl-2 pr-6 group rounded-xl relative">
+              <div className="carousel-item  pl-2 sm:pr-6 group rounded-xl relative">
                 <Link to={`/songs/${items?._id}/details`}>
                   <img
                     src={items?.banner}
                     alt={``}
-                    className="rounded-full h-[220px] w-[260px]  sm:transform sm:transition-all sm:group-hover:scale-90"
+                    className="rounded-full h-[150px] w-[170px] sm:h-[220px] sm:w-[260px]  sm:transform sm:transition-all sm:group-hover:scale-90"
                   />
                   <div className="absolute pl-6 m-6 bottom-0 z-30 sm:group-hover:scale-90 ">
-                    <h1 className="w-64 text-lg font-semibold leading-8 mt-2 text-white">
+                    <h1 className="w-full text-xs sm:text-lg font-semibold leading-8 mt-2 text-white">
                       {items?.name}
                     </h1>
-                    <p className="mt-4 text-base font-medium cursor-pointer leading-4 underline text-white">
+                    <p className="mt-4 text-xs sm:text-base font-medium cursor-pointer leading-4 underline text-white">
                       {items?.network}
                     </p>
                   </div>

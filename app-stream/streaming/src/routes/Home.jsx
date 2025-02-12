@@ -8,7 +8,6 @@ import Navbar from "../layout/Navbar";
 import SecondHero from "../layout/SecondHero";
 import SlideHeader from "../layout/SlideHeader";
 import SlidePlaylist from "../layout/SlidePlaylist";
-import ThirdHero from "../layout/ThirdHero";
 
 export default function Home() {
   return (
@@ -24,7 +23,6 @@ export default function Home() {
         <SlideHeader />
         <SectionHeader />
         <SectionItems />
-        <ThirdHero />
         <SlidePlaylist />
         <SectionMusic />
         <Footer />

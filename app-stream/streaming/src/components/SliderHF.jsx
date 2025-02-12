@@ -40,22 +40,22 @@ export default function SliderHF() {
           return (
             <div
               key={items?._id}
-              className="carousel-item  pl-2 pr-6 rounded-xl relative"
+              className="carousel-item  pl-2 pr-2 sm:pr-6 rounded-xl relative"
             >
               <Link to={`/mooviesHome/${items?._id}`}>
                 <img
                   src={items?.banner}
                   alt={``}
-                  className="rounded-xl h-[300px] w-[340px] sm:transform sm:transition-all sm:hover:scale-90"
+                  className="rounded-xl h-[150px] w-[170px] sm:h-[300px] sm:w-[340px] sm:transform sm:transition-all sm:hover:scale-90"
                 />
                 <div className="absolute m-6 bottom-0 z-30">
                   <p className="text-sm leading-none text-white">
                     {items?.rating}/10
                   </p>
-                  <h1 className="w-64 text-2xl font-semibold leading-8 mt-2 text-white">
+                  <h1 className="w-full text-xs sm:text-2xl font-semibold leading-8 mt-2 text-white">
                     {items?.title}
                   </h1>
-                  <p className="mt-4 text-base font-medium cursor-pointer leading-4 underline text-white">
+                  <p className="mt-4 text-xs sm:text-base font-medium cursor-pointer leading-4 underline text-white">
                     {items?.network}
                   </p>
                 </div>
