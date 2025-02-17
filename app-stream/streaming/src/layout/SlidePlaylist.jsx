@@ -77,10 +77,10 @@ export default function SlidePlaylist() {
                   />
                   <div className="absolute m-6 bottom-0 z-30">
                     <p className="text-xs sm:text-sm leading-none text-white">
-                      {items?.rating}/10
+                      {items?.type}
                     </p>
                     <h1 className="w-full text-xs sm:text-2xl font-semibold sm:leading-8 mt-2 text-white">
-                      {items?.title}
+                      {items?.name}
                     </h1>
                     <p className="mt-4 text-xs sm:text-base font-medium cursor-pointer leading-4 underline text-white">
                       {items?.network}
