@@ -52,6 +52,8 @@ import Signup from "./routes/Signup";
 import { AuthContext } from "./services/account.service";
 import { AuthProvider } from "./services/account.service";
 import { useEffect, useState, useContext, useRef } from "react";
+import Profile from "./layout/Profile";
+import Pay from "./layout/Pay";
 
 function App() {
   const [loader, setLoader] = useState(true);
@@ -131,6 +133,9 @@ function App() {
         {/* Login */}
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        {/*Profile and abonnement section */}
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/pay" element={<Pay />} />
       </Routes>
     </div>
   );

@@ -24,8 +24,6 @@ function Navbar() {
     fetchUserInfo();
   }, [user, isAuthenticated, getUserInfo]);
 
-  console.log("info", userInfo);
-
   return (
     <>
       <nav className="navbar bg-black fixed z-50">
@@ -174,13 +172,14 @@ function Navbar() {
                                 ? "/avatar.webp"
                                 : userInfo?.photo
                             }
+                            alt=""
                           />
                         </div>
                       </div>
                     </summary>
                     <ul className="menu bg-black dropdown-content bg-base-100 rounded-box z-[1] w-40 p-2 shadow">
                       <li>
-                        <Link to="">mon compte</Link>
+                        <Link to="/profile">mon compte</Link>
                       </li>
                       <li>
                         <div onClick={logout}>se deconnecter</div>
@@ -317,7 +316,7 @@ function Navbar() {
                     className="dropdown-content menu bg-black rounded-box z-[1] w-40 p-2 shadow"
                   >
                     <li>
-                      <Link to="">mon compte</Link>
+                      <Link to="/profile">mon compte</Link>
                     </li>
                     <li>
                       <div onClick={logout}>se deconnecter</div>
