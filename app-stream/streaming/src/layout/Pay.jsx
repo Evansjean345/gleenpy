@@ -7,13 +7,29 @@ import orangeLogo from "../assets/logo/orange.png";
 import waveLogo from "../assets/logo/wave.png";
 import carte from "../assets/logo/carte-de-credit.png";
 import mobile from "../assets/logo/mobile-payment.png";
-import { PaperClipIcon, ChevronLeftIcon } from "@heroicons/react/20/solid";
+import { ChevronLeftIcon } from "@heroicons/react/20/solid";
 import React, { useContext, useState, useEffect } from "react";
+import { AuthContext } from "../services/account.service";
+import axios from "axios";
 
 const Pay = () => {
+  //wallet
   const [selectedWallet, setSelectedWallet] = useState("");
   const [selectedOption, setSelectedOption] = useState("mobile");
+  //context
+  const { isAuthenticated, getUserInfo, logout, user, token } =
+    useContext(AuthContext);
+  //setinformation
+  const [userInfo, setUserInfo] = useState(null);
   const navigate = useNavigate();
+  //submit state
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [amount, setAmount] = useState("");
+  const [otp, setOtp] = useState("");
+  const [waveUrl, setWaveUrl] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [error, setError] = useState(false);
+  const [error2, setError2] = useState(false);
   const wallets = [
     { name: "Orange", logo: orangeLogo },
     { name: "MTN", logo: mtnLogo },
@@ -26,8 +42,62 @@ const Pay = () => {
     onSwipedRight: () => setSelectedOption("mobile"),
   });
 
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      if (isAuthenticated() && !user) {
+        const userId = localStorage.getItem("userId");
+        const fetchedUserInfo = await getUserInfo(userId);
+        if (fetchedUserInfo) {
+          setUserInfo(fetchedUserInfo);
+        }
+      } else {
+        setUserInfo(user);
+      }
+    };
+
+    fetchUserInfo();
+  }, [user, isAuthenticated, getUserInfo]);
+
+  const handlePayment = async () => {
+    if (!selectedWallet || !phoneNumber || !amount) {
+      setError2(true);
+      return;
+    }
+
+    if (amount !== "1000") {
+      setError(true);
+      return;
+    }
+
+    const paymentData = {
+      userId: userInfo?._id,
+      amount,
+      provider: selectedWallet.toLocaleLowerCase(),
+      number: `225${phoneNumber}`,
+      ...(selectedWallet === "Orange" && { otp }),
+    };
+
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_URL}/subscribe`,
+        paymentData
+      );
+      if (response.status === 200) {
+        if (selectedWallet === "Wave" && response.data.waveLaunchUrl) {
+          setWaveUrl(response.data.waveLaunchUrl);
+          setIsModalOpen(true);
+        }
+      } else {
+        //navigate("/receipt")
+      }
+    } catch (error) {
+      alert("Erreur lors du paiment");
+      console.error(error);
+    }
+  };
+
   return (
-    <div className="bg-black">
+    <div className="bg-white">
       <nav className="navbar bg-black fixed z-50">
         <div id="logo" className="navbar-end">
           <NavLink to="/" className="bg-black text-red-700 text-2xl font-bold">
@@ -61,7 +131,19 @@ const Pay = () => {
             <ul
               tabIndex={0}
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-black text-white rounded-box w-52"
-            ></ul>
+            >
+              <li>
+                <NavLink
+                  to="/"
+                  end
+                  className={({ isActive }) =>
+                    isActive ? "bg-red-700" : "hover:bg-red-900"
+                  }
+                >
+                  Accueil
+                </NavLink>
+              </li>
+            </ul>
           </div>
         </div>
         {/* Nav mobile version End */}
@@ -75,19 +157,19 @@ const Pay = () => {
       <br />
       <br />
       <Link to="/">
-        <div className="sm:text-3xl pb-4 gap-x-3 cursor-pointer sm:pb-8 text-2xl font-semibold pt-12 text-white flex items-center">
-          <ChevronLeftIcon aria-hidden="true" className="size-10" />
+        <button className="sm:text-2xl pb-4 border my-8 mx-8 rounded-lg  border-gray-300 bg-gray-100 gap-x-1 cursor-pointer  text-2xl font-semibold py-2 px-2 text-red-600 flex items-center justify-center">
+          <ChevronLeftIcon aria-hidden="true" className="size-7" />
           <span> Revenir sur Nextdeo</span>
-        </div>
+        </button>
       </Link>
       <div data-overlay-container="true">
         <div className="flex flex-col w-full h-full">
-          <div className="flex flex-col justify-center items-center my-16 w-full max-w-3xl mx-auto">
+          <div className="flex flex-col justify-center items-center my-4 w-full max-w-3xl mx-auto">
             <div className="flex flex-col relative overflow-hidden h-auto text-foreground box-border bg-content1 outline-none mb-4 test-xs text-center rounded-lg shadow-lg">
               <p className="text-center text-white text-base bg-blue-500 px-6 py-3 mx-auto w-fit mt-4 rounded-lg">
                 Payer avec Aigle
               </p>
-              <div className="relative flex w-full p-3 flex-auto flex-col place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased text-white">
+              <div className="relative flex w-full p-3 flex-auto flex-col place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased text-black">
                 <div className="flex flex-col items-center justify-between">
                   <div className="w-full flex-1 justify-center flex items-center">
                     <img src={aigleLogo} alt="Logo" className="w-20 h-20" />
@@ -197,10 +279,12 @@ const Pay = () => {
                                 <input
                                   type="text"
                                   name="phone"
-                                  value={""}
-                                  onChange={""}
+                                  value={phoneNumber}
+                                  onChange={(e) =>
+                                    setPhoneNumber(e.target.value)
+                                  }
                                   placeholder="numéro de telephone"
-                                  className="w-full px-4 py-2 bg-black text-white border border-gray-700 rounded-lg focus:border-red-700 focus:ring-red-700"
+                                  className="w-full px-4 py-2 bg-white text-gray-500 border border-gray-300 rounded-lg focus:border-red-700 focus:ring-red-700"
                                   required
                                 />
                               </div>
@@ -212,10 +296,10 @@ const Pay = () => {
                                 <input
                                   type="text"
                                   name="montant"
-                                  value={""}
-                                  onChange={""}
+                                  value={amount}
+                                  onChange={(e) => setAmount(e.target.value)}
                                   placeholder="ex: 5000 FCFA"
-                                  className="w-full px-4 py-2 bg-black text-white border border-gray-700 rounded-lg focus:border-red-700 focus:ring-red-700"
+                                  className="w-full px-4 py-2 bg-white text-gray-500 border border-gray-300 rounded-lg focus:border-red-700 focus:ring-red-700"
                                   required
                                 />
                               </div>
@@ -228,10 +312,10 @@ const Pay = () => {
                                     <input
                                       type="text"
                                       name="otp"
-                                      value={""}
-                                      onChange={""}
+                                      value={otp}
+                                      onChange={(e) => setOtp(e.target.value)}
                                       placeholder="otp pour orange"
-                                      className="w-full px-4 py-2 bg-black text-white border border-gray-700 rounded-lg focus:border-red-700 focus:ring-red-700"
+                                      className="w-full px-4 py-2 bg-white text-gray-500 border border-gray-300 rounded-lg focus:border-red-700 focus:ring-red-700"
                                       required
                                     />
                                   </div>
@@ -242,7 +326,7 @@ const Pay = () => {
 
                           <div className="mt-6">
                             <button
-                              onClick={() => navigate("/receipt")}
+                              onClick={handlePayment}
                               className="w-full bg-blue-500 text-white p-3 text-xs rounded-lg font-medium transition-colors duration-300 hover:bg-blue-300 cursor-pointer"
                             >
                               Payer
@@ -253,7 +337,72 @@ const Pay = () => {
                               )}
                             </button>
                           </div>
+                          {/* valider le paiement avec wave */}
 
+                          {isModalOpen && waveUrl && (
+                            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+                              <div className="bg-white p-5 rounded-lg w-3/4 h-3/4 relative">
+                                <button
+                                  onClick={() => setIsModalOpen(false)}
+                                  className="absolute top-2 right-2 bg-red-500 text-white p-2 rounded"
+                                >
+                                  Fermer
+                                </button>
+                                <iframe
+                                  src={waveUrl}
+                                  className="w-full h-full"
+                                ></iframe>
+                              </div>
+                            </div>
+                          )}
+                          {error && (
+                            <div
+                              role="alert"
+                              className="alert alert-error my-2"
+                            >
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-6 w-6 shrink-0 cursor-pointer stroke-current"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                onClick={() => {
+                                  setError(false);
+                                }}
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth="2"
+                                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                              </svg>
+                              <span>Le montant doit etre égal à 1000 XOF</span>
+                            </div>
+                          )}
+                          {error2 && (
+                            <div
+                              role="alert"
+                              className="alert alert-error my-2"
+                            >
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-6 w-6 shrink-0 cursor-pointer stroke-current"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                onClick={() => {
+                                  setError2(false);
+                                }}
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth="2"
+                                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                              </svg>
+                              <span>Veuillez selectionnez l'operateur</span>
+                            </div>
+                          )}
                           {/* Texte en bas du bouton */}
                           <div className="text-center mt-4 text-slate-600 max-w-xs mx-auto">
                             <p className="text-sm">
@@ -286,7 +435,7 @@ const Pay = () => {
                                   value={""}
                                   onChange={""}
                                   placeholder="Entrez le nom"
-                                  className="w-full px-4 py-2 bg-black text-white border border-gray-700 rounded-lg focus:border-red-700 focus:ring-red-700"
+                                  className="w-full px-4 py-2 bg-white text-gray-500 border border-gray-300 rounded-lg focus:border-red-700 focus:ring-red-700"
                                   required
                                 />
                               </div>
@@ -303,7 +452,7 @@ const Pay = () => {
                                   value={""}
                                   onChange={""}
                                   placeholder="xxxxx"
-                                  className="w-full px-4 py-2 bg-black text-white border border-gray-700 rounded-lg focus:border-red-700 focus:ring-red-700"
+                                  className="w-full px-4 py-2 bg-white text-gray-500 border border-gray-300 rounded-lg focus:border-red-700 focus:ring-red-700"
                                   required
                                 />
                               </div>
@@ -319,7 +468,7 @@ const Pay = () => {
                                 value={""}
                                 onChange={""}
                                 placeholder="xxxxx"
-                                className="w-full px-4 py-2 bg-black text-white border border-gray-700 rounded-lg focus:border-red-700 focus:ring-red-700"
+                                className="w-full px-4 py-2 bg-white text-gray-500 border border-gray-300 rounded-lg focus:border-red-700 focus:ring-red-700"
                                 required
                               />
                             </div>
@@ -335,7 +484,7 @@ const Pay = () => {
                                   value={""}
                                   onChange={""}
                                   placeholder="numéro de telephone"
-                                  className="w-full px-4 py-2 bg-black text-white border border-gray-700 rounded-lg focus:border-red-700 focus:ring-red-700"
+                                  className="w-full px-4 py-2 bg-white text-gray-500 border border-gray-300 rounded-lg focus:border-red-700 focus:ring-red-700"
                                   required
                                 />
                               </div>
@@ -352,7 +501,7 @@ const Pay = () => {
                                   value={""}
                                   onChange={""}
                                   placeholder="ex: 5000 FCFA"
-                                  className="w-full px-4 py-2 bg-black text-white border border-gray-700 rounded-lg focus:border-red-700 focus:ring-red-700"
+                                  className="w-full px-4 py-2 bg-white text-gray-500 border border-gray-300 rounded-lg focus:border-red-700 focus:ring-red-700"
                                   required
                                 />
                               </div>

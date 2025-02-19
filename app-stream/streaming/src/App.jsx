@@ -54,6 +54,7 @@ import { AuthProvider } from "./services/account.service";
 import { useEffect, useState, useContext, useRef } from "react";
 import Profile from "./layout/Profile";
 import Pay from "./layout/Pay";
+import Invoice from "./layout/Invoice";
 
 function App() {
   const [loader, setLoader] = useState(true);
@@ -136,6 +137,7 @@ function App() {
         {/*Profile and abonnement section */}
         <Route path="/profile" element={<Profile />} />
         <Route path="/pay" element={<Pay />} />
+        <Route path="/invoice" element={<Invoice />} />
       </Routes>
     </div>
   );

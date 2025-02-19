@@ -29,6 +29,7 @@ export default function Profile() {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(dateString).toLocaleDateString("fr-FR", options);
   }
+
   return (
     <>
       <nav className="navbar bg-black fixed z-50">
@@ -156,14 +157,14 @@ export default function Profile() {
       <br />
       <br />
       <br />
-      <div className="md:py-24 md:px-24 py-16 px-8 bg-black ">
+      <div className="md:py-4 md:px-24 py-16 px-8 bg-white ">
         <Link to="/">
-          <div className="sm:text-3xl pb-4 gap-x-3 cursor-pointer sm:pb-8 text-2xl font-semibold text-white flex items-center">
-            <ChevronLeftIcon aria-hidden="true" className="size-10" />
+          <button className="sm:text-2xl rounded-lg  border-gray-300 bg-gray-100 my-8  py-2 px-2  gap-x-3 cursor-pointer  text-2xl font-semibold text-red-600 flex items-center">
+            <ChevronLeftIcon aria-hidden="true" className="size-7" />
             <span> Revenir sur Nextdeo</span>
-          </div>
+          </button>
         </Link>
-        <div className="border-2 md:px-16 md:py-16 px-4 py-4 border-gray-200 rounded-md text-white">
+        <div className="border-2 md:px-16 md:py-16 px-4 py-4 border-gray-300 rounded-md text-black">
           <div className="px-4 sm:px-0">
             <h3 className="sm::text-2xl text-xl font-semibold ">
               Informations personnelles
@@ -172,47 +173,47 @@ export default function Profile() {
               details du compte et abonnement
             </p>
           </div>
-          <div className="mt-6 border-t border-gray-100">
-            <dl className="divide-y divide-gray-100">
+          <div className="mt-6 border-t border-gray-300">
+            <dl className="divide-y divide-gray-300">
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                <div className="flex items-center gap-x-2">
+                <div className="flex items-center gap-x-2 border-2 rounded-md py-2 px-4 border-gray-200 bg-gray-100">
                   <img src="/profil_icon.png" alt="" className="w-8 h-8" />
                   <dt className="text-sm/6 font-medium ">Nom complet</dt>
                 </div>
 
-                <dd className="mt-1 text-sm/6  sm:col-span-2 sm:mt-0">
+                <dd className="mt-1 text-sm/6  sm:col-span-2 py-2 px-1 sm:mt-0">
                   {userInfo?.fullname}
                 </dd>
               </div>
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                <div className="flex items-center gap-x-2">
+                <div className="flex items-center gap-x-2 border-2 rounded-md py-2 px-4 border-gray-200 bg-gray-100">
                   <img src="/mail_icon.png" alt="" className="w-8 h-8" />
                   <dt className="text-sm/6 font-medium ">Email de connexion</dt>
                 </div>
-                <dd className="mt-1 text-sm/6  sm:col-span-2 sm:mt-0">
+                <dd className="mt-1 text-sm/6  sm:col-span-2 sm:mt-0 py-2 px-1">
                   {userInfo?.email}
                 </dd>
               </div>
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                <div className="flex items-center gap-x-2">
+                <div className="flex items-center gap-x-2 border-2 rounded-md py-2 px-4 border-gray-200 bg-gray-100">
                   <img src="/phone_icon.png" alt="" className="w-8 h-8" />
                   <dt className="text-sm/6 font-medium ">
                     numero de connexion (telephone)
                   </dt>
                 </div>
-                <dd className="mt-1 text-sm/6  sm:col-span-2 sm:mt-0">
+                <dd className="mt-1 text-sm/6  sm:col-span-2 sm:mt-0 py-2 px-1">
                   {userInfo?.phone}
                 </dd>
               </div>
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                <div className="flex items-center gap-x-2">
+                <div className="flex items-center gap-x-2 border-2 rounded-md py-2 px-4 border-gray-200 bg-gray-100">
                   <img src="/password_icon.png" alt="" className="w-8 h-8" />
                   <dt className="text-sm/6 font-medium ">
                     code de connexion (code pin)
                   </dt>
                 </div>
 
-                <dd className="mt-1 text-sm/6  sm:col-span-2 sm:mt-0">
+                <dd className="mt-1 text-sm/6  sm:col-span-2 sm:mt-0 py-2 px-1">
                   {userInfo?.codepin}
                 </dd>
               </div>
@@ -257,19 +258,22 @@ export default function Profile() {
           </div>
         </div>
       </div>
-      <div className="md:px-24 px-8 bg-black ">
-        <div className="sm:text-3xl pb-4 gap-x-3 cursor-pointer sm:pb-8 text-2xl font-semibold text-white flex items-center">
-          <span> Mon abonnement</span>
+      <div className="md:px-24 px-8 bg-white ">
+        <div className="pb-4 gap-x-3 cursor-pointer sm:pb-8 text-2xl font-semibold text-red-600 flex items-center">
+          <span className="sm:text-2xl rounded-lg  border-gray-300 bg-gray-100 py-2 px-2">
+            {" "}
+            Mon abonnement
+          </span>
         </div>
-        <div className="border-2 md:px-16 md:py-16 px-4 py-4 border-gray-200 rounded-md text-white">
+        <div className="border-2 md:px-16 md:py-16 px-4 py-4 border-gray-300 rounded-md text-black">
           <div className="px-4 sm:px-0">
             <h3 className="sm::text-2xl text-xl font-semibold ">
               Mon abonnement
             </h3>
             <p className="mt-1 max-w-2xl text-sm/6">details de l'abonnement</p>
           </div>
-          <div className="mt-6 border-t border-gray-100">
-            <dl className="divide-y divide-gray-100">
+          <div className="mt-6 border-t border-gray-300">
+            <dl className="divide-y divide-gray-300">
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                 <div className="flex items-center gap-x-2">
                   <dt className="text-sm/6 font-medium ">
@@ -362,7 +366,7 @@ export default function Profile() {
               </div>
               <Link
                 className={
-                  "w-full flex items-center gap-x-2 px-4 py-2 mt-4 rounded-lg font-semibold hover:bg-red-700 bg-white text-black hover:text-white"
+                  "w-full flex items-center border border-gray-300 gap-x-2 px-4 py-2 mt-4 rounded-lg font-semibold hover:bg-red-700 bg-gray-200 text-black hover:text-white"
                 }
                 to="/pay"
               >
