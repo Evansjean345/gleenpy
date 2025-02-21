@@ -1,10 +1,62 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext, useEffect } from "react";
 import html2canvas from "html2canvas-pro";
 import jsPDF from "jspdf";
 import aigleLogo from "../assets/logo/aigle.png";
+import { AuthContext } from "../services/account.service";
+import axios from "axios";
 
 export default function Invoice() {
   const receiptRef = useRef(null); // Référence pour capturer le div
+  const [lastestTransaction, setLatestTransaction] = useState(null);
+  const [userInfo, setUserInfo] = useState(null);
+  //context
+  const { isAuthenticated, getUserInfo, logout, user, token } =
+    useContext(AuthContext);
+
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      if (isAuthenticated() && !user) {
+        const userId = localStorage.getItem("userId");
+        const fetchedUserInfo = await getUserInfo(userId);
+        if (fetchedUserInfo) {
+          setUserInfo(fetchedUserInfo);
+        }
+      } else {
+        setUserInfo(user);
+      }
+    };
+    fetchUserInfo();
+  }, [user, isAuthenticated, getUserInfo]);
+
+  useEffect(() => {
+    const fetchLatestTransaction = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}/user/${userInfo._id}/transactions`
+        );
+        const data = await response.json();
+
+        if (data.transactions && data.transactions.length > 0) {
+          // Trier les transactions par date (décroissante)
+          const sortedTransactions = data.transactions.sort(
+            (a, b) => new Date(b.created_at) - new Date(a.created_at)
+          );
+          setLatestTransaction(sortedTransactions[0]);
+        }
+      } catch (error) {
+        console.error(
+          "Erreur lors de la recuperation des transactions :",
+          error
+        );
+      }
+    };
+    if (userInfo !== null) {
+      fetchLatestTransaction();
+    }
+  }, [userInfo]);
+
+  console.log("derniere transaction", lastestTransaction);
+
   const handleDownloadPDF = () => {
     const input = receiptRef.current;
     setTimeout(() => {
@@ -65,7 +117,9 @@ export default function Invoice() {
               <div className="flex flex-col space-y-2">
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gray-600">Référence :</span>
-                  <span className="text-sm font-bold">AIG-70285185</span>
+                  <span className="text-sm font-bold">
+                    {lastestTransaction?.transaction_id}
+                  </span>
                 </div>
                 <hr
                   className="shrink-0 bg-gray-300 border-none w-full h-px my-1"
@@ -76,7 +130,7 @@ export default function Invoice() {
                     Date et heure de paiement :
                   </span>
                   <span className="text-sm font-bold">
-                    04/02/2025 à 11:58:05
+                    {new Date(lastestTransaction?.created_at).toUTCString()}
                   </span>
                 </div>
                 <hr
@@ -85,8 +139,28 @@ export default function Invoice() {
                 />
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gray-600">Status :</span>
-                  <span className="text-sm font-bold">Échec</span>
+                  <span className="text-sm font-bold">
+                    {lastestTransaction?.status}
+                  </span>
                 </div>
+                {lastestTransaction?.status === "failed" ? (
+                  <>
+                    <hr
+                      className="shrink-0 bg-gray-300 border-none w-full h-px my-1"
+                      role="separator"
+                    />
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm text-gray-600">
+                        raison de l'echec :
+                      </span>
+                      <span className="text-sm font-bold">
+                        {lastestTransaction?.failure_reason}
+                      </span>
+                    </div>
+                  </>
+                ) : (
+                  <></>
+                )}
               </div>
             </div>
 
@@ -96,46 +170,10 @@ export default function Invoice() {
             <div className="mt-4 p-4 bg-gray-50 rounded-lg">
               <div className="flex flex-col space-y-2">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-600">
-                    Nom du marchand :
+                  <span className="text-sm text-gray-600">Nom du client :</span>
+                  <span className="text-sm font-bold">
+                    {userInfo?.fullname}
                   </span>
-                  <span className="text-sm font-bold">Sialou</span>
-                </div>
-                <hr
-                  className="shrink-0 bg-gray-300 border-none w-full h-px my-1"
-                  role="separator"
-                />
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-600">
-                    Numéro de marchand :
-                  </span>
-                  <span className="text-sm font-bold">2250554457254</span>
-                </div>
-                <hr
-                  className="shrink-0 bg-gray-300 border-none w-full h-px my-1"
-                  role="separator"
-                />
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-600">
-                    Mode de paiement :
-                  </span>
-                  <span className="text-sm font-bold">Mobile Money</span>
-                </div>
-                <hr
-                  className="shrink-0 bg-gray-300 border-none w-full h-px my-1"
-                  role="separator"
-                />
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-600">Opérateur :</span>
-                  <span className="text-sm font-bold">MTN</span>
-                </div>
-                <hr
-                  className="shrink-0 bg-gray-300 border-none w-full h-px my-1"
-                  role="separator"
-                />
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-600">Montant :</span>
-                  <span className="text-sm font-bold">5 FCFA</span>
                 </div>
                 <hr
                   className="shrink-0 bg-gray-300 border-none w-full h-px my-1"
@@ -145,7 +183,49 @@ export default function Invoice() {
                   <span className="text-sm text-gray-600">
                     Numéro du client :
                   </span>
-                  <span className="text-sm font-bold">0554457254</span>
+                  <span className="text-sm font-bold">{userInfo?.phone}</span>
+                </div>
+                <hr
+                  className="shrink-0 bg-gray-300 border-none w-full h-px my-1"
+                  role="separator"
+                />
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-gray-600">
+                    Mode de paiement :
+                  </span>
+                  <span className="text-sm font-bold">
+                    {lastestTransaction?.operation_type}
+                  </span>
+                </div>
+                <hr
+                  className="shrink-0 bg-gray-300 border-none w-full h-px my-1"
+                  role="separator"
+                />
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-gray-600">Opérateur :</span>
+                  <span className="text-sm font-bold">
+                    {lastestTransaction?.provider}
+                  </span>
+                </div>
+                <hr
+                  className="shrink-0 bg-gray-300 border-none w-full h-px my-1"
+                  role="separator"
+                />
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-gray-600">Montant :</span>
+                  <span className="text-sm font-bold">
+                    {lastestTransaction?.amount} XOF
+                  </span>
+                </div>
+                <hr
+                  className="shrink-0 bg-gray-300 border-none w-full h-px my-1"
+                  role="separator"
+                />
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-gray-600">
+                    Nom du Marchand :
+                  </span>
+                  <span className="text-sm font-bold">Nextdeo</span>
                 </div>
                 <hr
                   className="shrink-0 bg-gray-300 border-none w-full h-px my-1"
@@ -155,9 +235,7 @@ export default function Invoice() {
                   <span className="text-sm text-gray-600">
                     Motif de la transaction :
                   </span>
-                  <span className="text-sm font-bold">
-                    Paiement de recharge
-                  </span>
+                  <span className="text-sm font-bold">Abonnement Nextdeo</span>
                 </div>
               </div>
             </div>
