@@ -3,12 +3,13 @@ import html2canvas from "html2canvas-pro";
 import jsPDF from "jspdf";
 import aigleLogo from "../assets/logo/aigle.png";
 import { AuthContext } from "../services/account.service";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Invoice() {
   const receiptRef = useRef(null); // Référence pour capturer le div
   const [lastestTransaction, setLatestTransaction] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
+  const navigate = useNavigate();
   //context
   const { isAuthenticated, getUserInfo, logout, user, token } =
     useContext(AuthContext);
@@ -82,6 +83,29 @@ export default function Invoice() {
   return (
     <div className="bg-white py-8 text-gray-600">
       <div data-overlay-container="true">
+        <div className="flex w-full justify-center">
+          {userInfo?.isSubscribed === true ? (
+            <div
+              className={
+                "w-64 text-center flex cursor-pointer justify-center items-center  border border-gray-300 gap-x-2 px-4 py-2 mt-4 rounded-lg font-semibold hover:bg-red-700 bg-gray-200 text-black hover:text-white"
+              }
+              onClick={logout}
+            >
+              Revenir sur Nextdeo
+            </div>
+          ) : (
+            <div
+              className={
+                "w-64 text-center flex cursor-pointer justify-center items-center  border border-gray-300 gap-x-2 px-4 py-2 mt-4 rounded-lg font-semibold hover:bg-red-700 bg-gray-200 text-black hover:text-white"
+              }
+              onClick={() => {
+                navigate("/moviesHome");
+              }}
+            >
+              Revenir sur Nextdeo
+            </div>
+          )}
+        </div>
         <div className="flex justify-center gap-4 mt-6">
           <button
             onClick={handleDownloadPDF}

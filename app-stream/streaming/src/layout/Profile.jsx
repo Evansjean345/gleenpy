@@ -106,12 +106,21 @@ export default function Profile() {
                         </div>
                       </div>
                     </summary>
-                    <ul className="menu bg-black dropdown-content bg-base-100 rounded-box z-[1] w-40 p-2 shadow">
+                    <ul className="menu bg-black text-white dropdown-content bg-base-100 rounded-box z-[1] w-40 p-2 shadow">
                       <li>
-                        <Link to="/profile">mon compte</Link>
+                        <Link to="/profile" className="hover:bg-red-600">
+                          mon compte
+                        </Link>
                       </li>
                       <li>
-                        <div onClick={logout}>se deconnecter</div>
+                        <Link to="/pay" className="hover:bg-red-600">
+                          acheter un abonnement
+                        </Link>
+                      </li>
+                      <li>
+                        <div onClick={logout} className="hover:bg-red-600">
+                          se deconnecter
+                        </div>
                       </li>
                     </ul>
                   </details>
@@ -140,13 +149,22 @@ export default function Profile() {
               </div>
               <ul
                 tabIndex={0}
-                className="dropdown-content menu bg-black rounded-box z-[1] w-56 p-2 shadow"
+                className="dropdown-content menu text-white bg-black rounded-box z-[1] w-56 p-2 shadow"
               >
                 <li>
-                  <Link to="/">revenir sur Nextdeo </Link>
+                  <Link to="/" className="hover:bg-red-600">
+                    revenir sur Nextdeo{" "}
+                  </Link>
                 </li>
                 <li>
-                  <div onClick={logout}>se deconnecter</div>
+                  <Link to="/pay" className="hover:bg-red-600">
+                    acheter un abonnement
+                  </Link>
+                </li>
+                <li>
+                  <div onClick={logout} className="hover:bg-red-600">
+                    se deconnecter
+                  </div>
                 </li>
               </ul>
             </div>
